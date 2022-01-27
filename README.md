@@ -31,3 +31,5 @@ ScreenShots??
 ![](https://cdn.discordapp.com/attachments/934893691200503888/936381578442063902/unknown.png)
 
 </details>
+
+![](https://i.imgur.com/LpiXrTp.gif)
