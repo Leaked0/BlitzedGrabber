@@ -1,5 +1,7 @@
 # BlitzedGrabber
 
+A way to contact the fabulous Qizq that sent this skidded tool => Telegram [@notqizq](https://t.me/notqizq)
+
 <details>
 <summary> Official Message </summary>
 Blitzed Grabber<br>
