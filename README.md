@@ -2,7 +2,9 @@
 
 A way to contact the fabulous Qizq that sent this skidded tool => Telegram [@notqizq](https://t.me/notqizq)
 
-Leak List for 2022 [Click Here](https://github.com/HideakiAtsuyo/Leaked0-List-2022) and if you a specific leak [Click Here](https://github.com/HideakiAtsuyo/Leaked0-List-2022/issues/new) 
+Leak List for 2022 [Click Here](https://github.com/HideakiAtsuyo/Leaked0-List-2022) and if you a specific leak [Click Here](https://github.com/HideakiAtsuyo/Leaked0-List-2022/issues/new)
+
+If you want the 1.0 [Click Here](https://github.com/Leaked0/BlitzedGrabber/tree/1.0)
 
 <details>
 <summary> Official Message </summary>
