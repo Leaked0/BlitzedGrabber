@@ -8,38 +8,38 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x0200001B RID: 27
 	public class Renamer : Protection
 	{
-		// Token: 0x06000057 RID: 87 RVA: 0x00004AE0 File Offset: 0x00002EE0
+		// Token: 0x06000056 RID: 86 RVA: 0x00004AD8 File Offset: 0x00002CD8
 		public Renamer()
 		{
 			base.Name = "Renamer";
 		}
 
 		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000058 RID: 88 RVA: 0x00004AF3 File Offset: 0x00002EF3
-		// (set) Token: 0x06000059 RID: 89 RVA: 0x00004AFB File Offset: 0x00002EFB
+		// (get) Token: 0x06000057 RID: 87 RVA: 0x00004AEB File Offset: 0x00002CEB
+		// (set) Token: 0x06000058 RID: 88 RVA: 0x00004AF3 File Offset: 0x00002CF3
 		private int MethodAmount { get; set; }
 
 		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x0600005A RID: 90 RVA: 0x00004B04 File Offset: 0x00002F04
-		// (set) Token: 0x0600005B RID: 91 RVA: 0x00004B0C File Offset: 0x00002F0C
+		// (get) Token: 0x06000059 RID: 89 RVA: 0x00004AFC File Offset: 0x00002CFC
+		// (set) Token: 0x0600005A RID: 90 RVA: 0x00004B04 File Offset: 0x00002D04
 		private int ParameterAmount { get; set; }
 
 		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x0600005C RID: 92 RVA: 0x00004B15 File Offset: 0x00002F15
-		// (set) Token: 0x0600005D RID: 93 RVA: 0x00004B1D File Offset: 0x00002F1D
+		// (get) Token: 0x0600005B RID: 91 RVA: 0x00004B0D File Offset: 0x00002D0D
+		// (set) Token: 0x0600005C RID: 92 RVA: 0x00004B15 File Offset: 0x00002D15
 		private int PropertyAmount { get; set; }
 
 		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x0600005E RID: 94 RVA: 0x00004B26 File Offset: 0x00002F26
-		// (set) Token: 0x0600005F RID: 95 RVA: 0x00004B2E File Offset: 0x00002F2E
+		// (get) Token: 0x0600005D RID: 93 RVA: 0x00004B1E File Offset: 0x00002D1E
+		// (set) Token: 0x0600005E RID: 94 RVA: 0x00004B26 File Offset: 0x00002D26
 		private int FieldAmount { get; set; }
 
 		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x06000060 RID: 96 RVA: 0x00004B37 File Offset: 0x00002F37
-		// (set) Token: 0x06000061 RID: 97 RVA: 0x00004B3F File Offset: 0x00002F3F
+		// (get) Token: 0x0600005F RID: 95 RVA: 0x00004B2F File Offset: 0x00002D2F
+		// (set) Token: 0x06000060 RID: 96 RVA: 0x00004B37 File Offset: 0x00002D37
 		private int EventAmount { get; set; }
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00004B48 File Offset: 0x00002F48
+		// Token: 0x06000061 RID: 97 RVA: 0x00004B40 File Offset: 0x00002D40
 		public override void Execute()
 		{
 			if (Kappa.DontRename)
@@ -51,54 +51,54 @@ namespace BlitzedConfuser.Protections
 			Kappa.Module.EncBaseId = new Guid?(Guid.NewGuid());
 			Kappa.Module.Name = "urnotfinnacrackthisretardlolSTONEDEAGLE" + Randomizer.String(12);
 			Kappa.Module.EntryPoint.Name = Randomizer.String(MemberRenamer.StringLength()) + "StvnedEagleWINNING";
-			foreach (TypeDef typeDef in Kappa.Module.Types)
+			foreach (TypeDef type in Kappa.Module.Types)
 			{
-				if (Renamer.CanRename(typeDef))
+				if (Renamer.CanRename(type))
 				{
-					typeDef.Namespace = string.Empty;
-					typeDef.Name = "STONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOL" + Randomizer.String(5);
+					type.Namespace = string.Empty;
+					type.Name = "STONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOL" + Randomizer.String(5);
 				}
-				foreach (MethodDef methodDef in typeDef.Methods)
+				foreach (MethodDef i in type.Methods)
 				{
-					if (Renamer.CanRename(methodDef) && !Kappa.ForceWinForms && !Kappa.FileExtension.Contains("dll"))
+					if (Renamer.CanRename(i) && !Kappa.ForceWinForms && !Kappa.FileExtension.Contains("dll"))
 					{
-						methodDef.Name = "STONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOL" + Randomizer.String(6);
+						i.Name = "STONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOLSTONEDEAGLEWINNINGLOL" + Randomizer.String(6);
 						int num = this.MethodAmount + 1;
 						this.MethodAmount = num;
 					}
-					foreach (Parameter parameter in methodDef.Parameters)
+					foreach (Parameter para in i.Parameters)
 					{
-						if (Renamer.CanRename(parameter))
+						if (Renamer.CanRename(para))
 						{
-							parameter.Name = "STVNEDEAGLE" + Randomizer.String(7);
+							para.Name = "STVNEDEAGLE" + Randomizer.String(7);
 							int num = this.ParameterAmount + 1;
 							this.ParameterAmount = num;
 						}
 					}
 				}
-				foreach (PropertyDef propertyDef in typeDef.Properties)
+				foreach (PropertyDef p in type.Properties)
 				{
-					if (Renamer.CanRename(propertyDef))
+					if (Renamer.CanRename(p))
 					{
-						propertyDef.Name = Randomizer.String(MemberRenamer.StringLength()) + "StvnedEagle";
+						p.Name = Randomizer.String(MemberRenamer.StringLength()) + "StvnedEagle";
 						int num = this.PropertyAmount + 1;
 						this.PropertyAmount = num;
 					}
 				}
-				foreach (FieldDef fieldDef in typeDef.Fields)
+				foreach (FieldDef field in type.Fields)
 				{
-					if (Renamer.CanRename(fieldDef))
+					if (Renamer.CanRename(field))
 					{
-						fieldDef.Name = "STONEREAGLEZLOLSTONEREAGLEZLOLSTONEREAGLEZLOLSTONEREAGLEZLOLSTONEREAGLEZLOL" + Randomizer.String(15);
+						field.Name = "STONEREAGLEZLOLSTONEREAGLEZLOLSTONEREAGLEZLOLSTONEREAGLEZLOLSTONEREAGLEZLOL" + Randomizer.String(15);
 						int num = this.FieldAmount + 1;
 						this.FieldAmount = num;
 					}
 				}
-				foreach (EventDef eventDef in typeDef.Events)
+				foreach (EventDef e in type.Events)
 				{
-					if (Renamer.CanRename(eventDef))
+					if (Renamer.CanRename(e))
 					{
-						eventDef.Name = "StvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagle" + Randomizer.String(6);
+						e.Name = "StvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagleStvnedEagle" + Randomizer.String(6);
 						int num = this.EventAmount + 1;
 						this.EventAmount = num;
 					}
@@ -107,29 +107,29 @@ namespace BlitzedConfuser.Protections
 			Console.WriteLine(string.Format("  Renamed {0} methods.\n  Renamed {1} parameters.", this.MethodAmount, this.ParameterAmount) + string.Format("\n  Renamed {0} properties.\n  Renamed {1} fields.\n  Renamed {2} events.", this.PropertyAmount, this.FieldAmount, this.EventAmount));
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x00004F48 File Offset: 0x00003348
+		// Token: 0x06000062 RID: 98 RVA: 0x00004F40 File Offset: 0x00003140
 		public static bool CanRename(object obj)
 		{
-			DefAnalyzer defAnalyzer;
+			DefAnalyzer analyze;
 			if (obj is MethodDef)
 			{
-				defAnalyzer = new MethodDefAnalyzer();
+				analyze = new MethodDefAnalyzer();
 			}
 			else if (obj is PropertyDef)
 			{
-				defAnalyzer = new PropertyDefAnalyzer();
+				analyze = new PropertyDefAnalyzer();
 			}
 			else if (obj is EventDef)
 			{
-				defAnalyzer = new EventDefAnalyzer();
+				analyze = new EventDefAnalyzer();
 			}
 			else if (obj is FieldDef)
 			{
-				defAnalyzer = new FieldDefAnalyzer();
+				analyze = new FieldDefAnalyzer();
 			}
 			else if (obj is Parameter)
 			{
-				defAnalyzer = new ParameterAnalyzer();
+				analyze = new ParameterAnalyzer();
 			}
 			else
 			{
@@ -137,9 +137,9 @@ namespace BlitzedConfuser.Protections
 				{
 					return false;
 				}
-				defAnalyzer = new TypeDefAnalyzer();
+				analyze = new TypeDefAnalyzer();
 			}
-			return defAnalyzer.Execute(obj);
+			return analyze.Execute(obj);
 		}
 	}
 }

@@ -8,70 +8,70 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x0200001A RID: 26
 	public class ProxyAdder : Protection
 	{
-		// Token: 0x06000050 RID: 80 RVA: 0x00004805 File Offset: 0x00002C05
+		// Token: 0x0600004F RID: 79 RVA: 0x000047FD File Offset: 0x000029FD
 		public ProxyAdder()
 		{
 			base.Name = "Proxy Adder";
 		}
 
 		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000051 RID: 81 RVA: 0x00004818 File Offset: 0x00002C18
-		// (set) Token: 0x06000052 RID: 82 RVA: 0x0000481F File Offset: 0x00002C1F
+		// (get) Token: 0x06000050 RID: 80 RVA: 0x00004810 File Offset: 0x00002A10
+		// (set) Token: 0x06000051 RID: 81 RVA: 0x00004817 File Offset: 0x00002A17
 		public static int Intensity { get; set; } = 2;
 
 		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000053 RID: 83 RVA: 0x00004827 File Offset: 0x00002C27
-		// (set) Token: 0x06000054 RID: 84 RVA: 0x0000482F File Offset: 0x00002C2F
+		// (get) Token: 0x06000052 RID: 82 RVA: 0x0000481F File Offset: 0x00002A1F
+		// (set) Token: 0x06000053 RID: 83 RVA: 0x00004827 File Offset: 0x00002A27
 		private int Amount { get; set; }
 
-		// Token: 0x06000055 RID: 85 RVA: 0x00004838 File Offset: 0x00002C38
+		// Token: 0x06000054 RID: 84 RVA: 0x00004830 File Offset: 0x00002A30
 		public override void Execute()
 		{
-			for (int i = 0; i < ProxyAdder.Intensity; i++)
+			for (int o = 0; o < ProxyAdder.Intensity; o++)
 			{
-				foreach (TypeDef typeDef in Kappa.Module.Types)
+				foreach (TypeDef t in Kappa.Module.Types)
 				{
-					for (int j = 0; j < typeDef.Methods.Count; j++)
+					for (int i = 0; i < t.Methods.Count; i++)
 					{
-						MethodDef methodDef = typeDef.Methods[j];
-						if (methodDef.HasBody)
+						MethodDef j = t.Methods[i];
+						if (j.HasBody)
 						{
-							for (int k = 0; k < methodDef.Body.Instructions.Count; k++)
+							for (int z = 0; z < j.Body.Instructions.Count; z++)
 							{
-								if (methodDef.Body.Instructions[k].OpCode == OpCodes.Call)
+								if (j.Body.Instructions[z].OpCode == OpCodes.Call)
 								{
-									MethodDef methodDef2 = methodDef.Body.Instructions[k].Operand as MethodDef;
-									if (methodDef2 != null && methodDef2.FullName.Contains(Kappa.Module.Assembly.Name) && methodDef2.Parameters.Count <= 4)
+									MethodDef targetMethod = j.Body.Instructions[z].Operand as MethodDef;
+									if (targetMethod != null && targetMethod.FullName.Contains(Kappa.Module.Assembly.Name) && targetMethod.Parameters.Count <= 4)
 									{
-										MethodDef methodDef3 = methodDef2.CopyMethod(Kappa.Module);
-										methodDef2.DeclaringType.Methods.Add(methodDef3);
-										ProxyExtension.CloneSignature(methodDef2, methodDef3);
-										CilBody cilBody = new CilBody();
-										cilBody.Instructions.Add(OpCodes.Nop.ToInstruction());
-										if (methodDef2.Parameters.Count > 0)
+										MethodDef newMeth = targetMethod.CopyMethod(Kappa.Module);
+										targetMethod.DeclaringType.Methods.Add(newMeth);
+										targetMethod.CloneSignature(newMeth);
+										CilBody body = new CilBody();
+										body.Instructions.Add(OpCodes.Nop.ToInstruction());
+										if (targetMethod.Parameters.Count > 0)
 										{
-											for (int l = 0; l < methodDef2.Parameters.Count; l++)
+											for (int x = 0; x < targetMethod.Parameters.Count; x++)
 											{
-												switch (l)
+												switch (x)
 												{
 												case 0:
-													cilBody.Instructions.Add(OpCodes.Ldarg_0.ToInstruction());
+													body.Instructions.Add(OpCodes.Ldarg_0.ToInstruction());
 													break;
 												case 1:
-													cilBody.Instructions.Add(OpCodes.Ldarg_1.ToInstruction());
+													body.Instructions.Add(OpCodes.Ldarg_1.ToInstruction());
 													break;
 												case 2:
-													cilBody.Instructions.Add(OpCodes.Ldarg_2.ToInstruction());
+													body.Instructions.Add(OpCodes.Ldarg_2.ToInstruction());
 													break;
 												case 3:
-													cilBody.Instructions.Add(OpCodes.Ldarg_3.ToInstruction());
+													body.Instructions.Add(OpCodes.Ldarg_3.ToInstruction());
 													break;
 												}
 											}
 										}
-										cilBody.Instructions.Add(OpCodes.Call.ToInstruction(methodDef3));
-										cilBody.Instructions.Add(OpCodes.Ret.ToInstruction());
-										methodDef2.Body = cilBody;
+										body.Instructions.Add(OpCodes.Call.ToInstruction(newMeth));
+										body.Instructions.Add(OpCodes.Ret.ToInstruction());
+										targetMethod.Body = body;
 										int amount = this.Amount + 1;
 										this.Amount = amount;
 									}

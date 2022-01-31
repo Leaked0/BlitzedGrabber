@@ -7,7 +7,7 @@ namespace BlitzedGrabber
 	// Token: 0x02000020 RID: 32
 	internal static class Program
 	{
-		// Token: 0x0600008D RID: 141 RVA: 0x0000A05B File Offset: 0x0000845B
+		// Token: 0x06000091 RID: 145 RVA: 0x00009E0F File Offset: 0x0000800F
 		[STAThread]
 		[Obsolete]
 		private static void Main()
@@ -18,7 +18,7 @@ namespace BlitzedGrabber
 			Application.Run(new Form1());
 		}
 
-		// Token: 0x0600008E RID: 142 RVA: 0x0000A084 File Offset: 0x00008484
+		// Token: 0x06000092 RID: 146 RVA: 0x00009E38 File Offset: 0x00008038
 		public static void SetValue(string key, string value)
 		{
 			Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -35,7 +35,7 @@ namespace BlitzedGrabber
 			ConfigurationManager.RefreshSection(configuration.AppSettings.SectionInformation.Name);
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x0000A0DE File Offset: 0x000084DE
+		// Token: 0x06000093 RID: 147 RVA: 0x00009E92 File Offset: 0x00008092
 		public static string GetValue(string key)
 		{
 			return ConfigurationManager.AppSettings[key];

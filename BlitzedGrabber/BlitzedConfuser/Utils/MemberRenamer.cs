@@ -6,13 +6,13 @@ namespace BlitzedConfuser.Utils
 	// Token: 0x02000005 RID: 5
 	public static class MemberRenamer
 	{
-		// Token: 0x0600001A RID: 26 RVA: 0x00002D35 File Offset: 0x00001135
-		public static void GetRenamed(IMemberDef member)
+		// Token: 0x06000019 RID: 25 RVA: 0x00002D2D File Offset: 0x00000F2D
+		public static void GetRenamed(this IMemberDef member)
 		{
 			member.Name = "StvnedEagleWINNINGLOL" + Randomizer.String(45);
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002D53 File Offset: 0x00001153
+		// Token: 0x0600001A RID: 26 RVA: 0x00002D4B File Offset: 0x00000F4B
 		public static int StringLength()
 		{
 			return Randomizer.Next(120, 30);

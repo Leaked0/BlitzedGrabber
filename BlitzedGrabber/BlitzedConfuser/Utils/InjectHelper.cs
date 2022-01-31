@@ -9,171 +9,171 @@ namespace BlitzedConfuser.Utils
 	// Token: 0x02000004 RID: 4
 	public static class InjectHelper
 	{
-		// Token: 0x06000011 RID: 17 RVA: 0x00002364 File Offset: 0x00000764
+		// Token: 0x06000010 RID: 16 RVA: 0x0000235C File Offset: 0x0000055C
 		public static TypeDefUser Clone(TypeDef origin)
 		{
-			TypeDefUser typeDefUser = new TypeDefUser(origin.Namespace, origin.Name)
+			TypeDefUser ret = new TypeDefUser(origin.Namespace, origin.Name)
 			{
 				Attributes = origin.Attributes
 			};
 			if (origin.ClassLayout != null)
 			{
-				typeDefUser.ClassLayout = new ClassLayoutUser(origin.ClassLayout.PackingSize, origin.ClassSize);
+				ret.ClassLayout = new ClassLayoutUser(origin.ClassLayout.PackingSize, origin.ClassSize);
 			}
 			foreach (GenericParam genericParam in origin.GenericParameters)
 			{
-				typeDefUser.GenericParameters.Add(new GenericParamUser(genericParam.Number, genericParam.Flags, "-"));
+				ret.GenericParameters.Add(new GenericParamUser(genericParam.Number, genericParam.Flags, "-"));
 			}
-			return typeDefUser;
+			return ret;
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002414 File Offset: 0x00000814
+		// Token: 0x06000011 RID: 17 RVA: 0x0000240C File Offset: 0x0000060C
 		public static MethodDefUser Clone(MethodDef origin)
 		{
-			MethodDefUser methodDefUser = new MethodDefUser(origin.Name, null, origin.ImplAttributes, origin.Attributes);
+			MethodDefUser ret = new MethodDefUser(origin.Name, null, origin.ImplAttributes, origin.Attributes);
 			foreach (GenericParam genericParam in origin.GenericParameters)
 			{
-				methodDefUser.GenericParameters.Add(new GenericParamUser(genericParam.Number, genericParam.Flags, "-"));
+				ret.GenericParameters.Add(new GenericParamUser(genericParam.Number, genericParam.Flags, "-"));
 			}
-			return methodDefUser;
+			return ret;
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x0000249C File Offset: 0x0000089C
+		// Token: 0x06000012 RID: 18 RVA: 0x00002494 File Offset: 0x00000694
 		public static FieldDefUser Clone(FieldDef origin)
 		{
 			return new FieldDefUser(origin.Name, null, origin.Attributes);
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x000024B0 File Offset: 0x000008B0
+		// Token: 0x06000013 RID: 19 RVA: 0x000024A8 File Offset: 0x000006A8
 		public static TypeDef PopulateContext(TypeDef typeDef, InjectContext ctx)
 		{
-			IDnlibDef dnlibDef;
-			TypeDef typeDef2;
-			if (!ctx.Map.TryGetValue(typeDef, out dnlibDef))
+			IDnlibDef existing;
+			TypeDef ret;
+			if (!ctx.Map.TryGetValue(typeDef, out existing))
 			{
-				typeDef2 = InjectHelper.Clone(typeDef);
-				ctx.Map[typeDef] = typeDef2;
+				ret = InjectHelper.Clone(typeDef);
+				ctx.Map[typeDef] = ret;
 			}
 			else
 			{
-				typeDef2 = (TypeDef)dnlibDef;
+				ret = (TypeDef)existing;
 			}
-			foreach (TypeDef typeDef3 in typeDef.NestedTypes)
+			foreach (TypeDef nestedType in typeDef.NestedTypes)
 			{
-				typeDef2.NestedTypes.Add(InjectHelper.PopulateContext(typeDef3, ctx));
+				ret.NestedTypes.Add(InjectHelper.PopulateContext(nestedType, ctx));
 			}
-			foreach (MethodDef methodDef in typeDef.Methods)
+			foreach (MethodDef method in typeDef.Methods)
 			{
-				typeDef2.Methods.Add((MethodDef)(ctx.Map[methodDef] = InjectHelper.Clone(methodDef)));
+				ret.Methods.Add((MethodDef)(ctx.Map[method] = InjectHelper.Clone(method)));
 			}
-			foreach (FieldDef fieldDef in typeDef.Fields)
+			foreach (FieldDef field in typeDef.Fields)
 			{
-				typeDef2.Fields.Add((FieldDef)(ctx.Map[fieldDef] = InjectHelper.Clone(fieldDef)));
+				ret.Fields.Add((FieldDef)(ctx.Map[field] = InjectHelper.Clone(field)));
 			}
-			return typeDef2;
+			return ret;
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00002600 File Offset: 0x00000A00
+		// Token: 0x06000014 RID: 20 RVA: 0x000025F8 File Offset: 0x000007F8
 		public static void CopyTypeDef(TypeDef typeDef, InjectContext ctx)
 		{
-			TypeDef typeDef2 = (TypeDef)ctx.Map[typeDef];
-			typeDef2.BaseType = ctx.Importer.Import(typeDef.BaseType);
-			foreach (InterfaceImpl interfaceImpl in typeDef.Interfaces)
+			TypeDef newTypeDef = (TypeDef)ctx.Map[typeDef];
+			newTypeDef.BaseType = ctx.Importer.Import(typeDef.BaseType);
+			foreach (InterfaceImpl iface in typeDef.Interfaces)
 			{
-				typeDef2.Interfaces.Add(new InterfaceImplUser(ctx.Importer.Import(interfaceImpl.Interface)));
+				newTypeDef.Interfaces.Add(new InterfaceImplUser(ctx.Importer.Import(iface.Interface)));
 			}
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002698 File Offset: 0x00000A98
 		private static Func<Instruction, Instruction> nine__zero;
+		// Token: 0x06000015 RID: 21 RVA: 0x00002690 File Offset: 0x00000890
 		public static void CopyMethodDef(MethodDef methodDef, InjectContext ctx)
 		{
-			MethodDef methodDef2 = (MethodDef)ctx.Map[methodDef];
-			methodDef2.Signature = ctx.Importer.Import(methodDef.Signature);
-			methodDef2.Parameters.UpdateParameterTypes();
+			MethodDef newMethodDef = (MethodDef)ctx.Map[methodDef];
+			newMethodDef.Signature = ctx.Importer.Import(methodDef.Signature);
+			newMethodDef.Parameters.UpdateParameterTypes();
 			if (methodDef.ImplMap != null)
 			{
-				methodDef2.ImplMap = new ImplMapUser(new ModuleRefUser(ctx.TargetModule, methodDef.ImplMap.Module.Name), methodDef.ImplMap.Name, methodDef.ImplMap.Attributes);
+				newMethodDef.ImplMap = new ImplMapUser(new ModuleRefUser(ctx.TargetModule, methodDef.ImplMap.Module.Name), methodDef.ImplMap.Name, methodDef.ImplMap.Attributes);
 			}
-			foreach (CustomAttribute customAttribute in methodDef.CustomAttributes)
+			foreach (CustomAttribute ca in methodDef.CustomAttributes)
 			{
-				methodDef2.CustomAttributes.Add(new CustomAttribute((ICustomAttributeType)ctx.Importer.Import(customAttribute.Constructor)));
+				newMethodDef.CustomAttributes.Add(new CustomAttribute((ICustomAttributeType)ctx.Importer.Import(ca.Constructor)));
 			}
 			if (methodDef.HasBody)
 			{
-				methodDef2.Body = new CilBody(methodDef.Body.InitLocals, new List<Instruction>(), new List<ExceptionHandler>(), new List<Local>());
-				methodDef2.Body.MaxStack = methodDef.Body.MaxStack;
+				newMethodDef.Body = new CilBody(methodDef.Body.InitLocals, new List<Instruction>(), new List<ExceptionHandler>(), new List<Local>());
+				newMethodDef.Body.MaxStack = methodDef.Body.MaxStack;
 				Dictionary<object, object> bodyMap = new Dictionary<object, object>();
 				foreach (Local local in methodDef.Body.Variables)
 				{
-					Local local2 = new Local(ctx.Importer.Import(local.Type));
-					methodDef2.Body.Variables.Add(local2);
-					local2.Name = local.Name;
-					local2.Attributes = local.Attributes;
-					bodyMap[local] = local2;
+					Local newLocal = new Local(ctx.Importer.Import(local.Type));
+					newMethodDef.Body.Variables.Add(newLocal);
+					newLocal.Name = local.Name;
+					newLocal.Attributes = local.Attributes;
+					bodyMap[local] = newLocal;
 				}
-				foreach (Instruction instruction in methodDef.Body.Instructions)
+				foreach (Instruction instr in methodDef.Body.Instructions)
 				{
-					Instruction instruction2 = new Instruction(instruction.OpCode, instruction.Operand)
+					Instruction newInstr = new Instruction(instr.OpCode, instr.Operand)
 					{
-						SequencePoint = instruction.SequencePoint
+						SequencePoint = instr.SequencePoint
 					};
-					if (instruction2.Operand is IType)
+					if (newInstr.Operand is IType)
 					{
-						instruction2.Operand = ctx.Importer.Import((IType)instruction2.Operand);
+						newInstr.Operand = ctx.Importer.Import((IType)newInstr.Operand);
 					}
-					else if (instruction2.Operand is IMethod)
+					else if (newInstr.Operand is IMethod)
 					{
-						instruction2.Operand = ctx.Importer.Import((IMethod)instruction2.Operand);
+						newInstr.Operand = ctx.Importer.Import((IMethod)newInstr.Operand);
 					}
-					else if (instruction2.Operand is IField)
+					else if (newInstr.Operand is IField)
 					{
-						instruction2.Operand = ctx.Importer.Import((IField)instruction2.Operand);
+						newInstr.Operand = ctx.Importer.Import((IField)newInstr.Operand);
 					}
-					methodDef2.Body.Instructions.Add(instruction2);
-					bodyMap[instruction] = instruction2;
+					newMethodDef.Body.Instructions.Add(newInstr);
+					bodyMap[instr] = newInstr;
 				}
-				foreach (Instruction instruction3 in methodDef2.Body.Instructions)
+				foreach (Instruction instr2 in newMethodDef.Body.Instructions)
 				{
-					if (instruction3.Operand != null && bodyMap.ContainsKey(instruction3.Operand))
+					if (instr2.Operand != null && bodyMap.ContainsKey(instr2.Operand))
 					{
-						instruction3.Operand = bodyMap[instruction3.Operand];
+						instr2.Operand = bodyMap[instr2.Operand];
 					}
-					else if (instruction3.Operand is Instruction[])
+					else if (instr2.Operand is Instruction[])
 					{
-						Instruction instruction4 = instruction3;
-						IEnumerable<Instruction> source = (Instruction[])instruction3.Operand;
+						Instruction instruction = instr2;
+						IEnumerable<Instruction> source = (Instruction[])instr2.Operand;
 						Func<Instruction, Instruction> selector;
 						if ((selector = nine__zero) == null)
 						{
 							selector = (nine__zero = (Instruction target) => (Instruction)bodyMap[target]);
 						}
-						instruction4.Operand = source.Select(selector).ToArray<Instruction>();
+						instruction.Operand = source.Select(selector).ToArray<Instruction>();
 					}
 				}
-				foreach (ExceptionHandler exceptionHandler in methodDef.Body.ExceptionHandlers)
+				foreach (ExceptionHandler eh in methodDef.Body.ExceptionHandlers)
 				{
-					methodDef2.Body.ExceptionHandlers.Add(new ExceptionHandler(exceptionHandler.HandlerType)
+					newMethodDef.Body.ExceptionHandlers.Add(new ExceptionHandler(eh.HandlerType)
 					{
-						CatchType = ((exceptionHandler.CatchType == null) ? null : ctx.Importer.Import(exceptionHandler.CatchType)),
-						TryStart = (Instruction)bodyMap[exceptionHandler.TryStart],
-						TryEnd = (Instruction)bodyMap[exceptionHandler.TryEnd],
-						HandlerStart = (Instruction)bodyMap[exceptionHandler.HandlerStart],
-						HandlerEnd = (Instruction)bodyMap[exceptionHandler.HandlerEnd],
-						FilterStart = ((exceptionHandler.FilterStart == null) ? null : ((Instruction)bodyMap[exceptionHandler.FilterStart]))
+						CatchType = ((eh.CatchType == null) ? null : ctx.Importer.Import(eh.CatchType)),
+						TryStart = (Instruction)bodyMap[eh.TryStart],
+						TryEnd = (Instruction)bodyMap[eh.TryEnd],
+						HandlerStart = (Instruction)bodyMap[eh.HandlerStart],
+						HandlerEnd = (Instruction)bodyMap[eh.HandlerEnd],
+						FilterStart = ((eh.FilterStart == null) ? null : ((Instruction)bodyMap[eh.FilterStart]))
 					});
 				}
-				methodDef2.Body.SimplifyMacros(methodDef2.Parameters);
+				newMethodDef.Body.SimplifyMacros(newMethodDef.Parameters);
 			}
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002BE0 File Offset: 0x00000FE0
+		// Token: 0x06000016 RID: 22 RVA: 0x00002BD8 File Offset: 0x00000DD8
 		public static void CopyFieldDef(FieldDef fieldDef, InjectContext ctx)
 		{
 			((FieldDef)ctx.Map[fieldDef]).Signature = ctx.Importer.Import(fieldDef.Signature);
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002C18 File Offset: 0x00001018
+		// Token: 0x06000017 RID: 23 RVA: 0x00002C10 File Offset: 0x00000E10
 		public static void Copy(TypeDef typeDef, InjectContext ctx, bool copySelf)
 		{
 			if (copySelf)
@@ -194,14 +194,14 @@ namespace BlitzedConfuser.Utils
 			}
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00002CE4 File Offset: 0x000010E4
+		// Token: 0x06000018 RID: 24 RVA: 0x00002CDC File Offset: 0x00000EDC
 		public static IEnumerable<IDnlibDef> Inject(TypeDef typeDef, TypeDef newType, ModuleDef target)
 		{
-			InjectContext injectContext = new InjectContext(typeDef.Module, target);
-			injectContext.Map[typeDef] = newType;
-			InjectHelper.PopulateContext(typeDef, injectContext);
-			InjectHelper.Copy(typeDef, injectContext, false);
-			return injectContext.Map.Values.Except(new TypeDef[] { newType });
+			InjectContext ctx = new InjectContext(typeDef.Module, target);
+			ctx.Map[typeDef] = newType;
+			InjectHelper.PopulateContext(typeDef, ctx);
+			InjectHelper.Copy(typeDef, ctx, false);
+			return ctx.Map.Values.Except(new TypeDef[] { newType });
 		}
 	}
 }

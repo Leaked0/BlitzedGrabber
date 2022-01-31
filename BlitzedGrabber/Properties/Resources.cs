@@ -14,13 +14,13 @@ namespace BlitzedGrabber.Properties
 	[CompilerGenerated]
 	internal class Resources
 	{
-		// Token: 0x06000090 RID: 144 RVA: 0x0000A0EB File Offset: 0x000084EB
+		// Token: 0x06000094 RID: 148 RVA: 0x00009E9F File Offset: 0x0000809F
 		internal Resources()
 		{
 		}
 
 		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000091 RID: 145 RVA: 0x0000A0F3 File Offset: 0x000084F3
+		// (get) Token: 0x06000095 RID: 149 RVA: 0x00009EA7 File Offset: 0x000080A7
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		internal static ResourceManager ResourceManager
 		{
@@ -35,8 +35,8 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000092 RID: 146 RVA: 0x0000A11F File Offset: 0x0000851F
-		// (set) Token: 0x06000093 RID: 147 RVA: 0x0000A126 File Offset: 0x00008526
+		// (get) Token: 0x06000096 RID: 150 RVA: 0x00009ED3 File Offset: 0x000080D3
+		// (set) Token: 0x06000097 RID: 151 RVA: 0x00009EDA File Offset: 0x000080DA
 		[EditorBrowsable(EditorBrowsableState.Advanced)]
 		internal static CultureInfo Culture
 		{
@@ -51,7 +51,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000094 RID: 148 RVA: 0x0000A12E File Offset: 0x0000852E
+		// (get) Token: 0x06000098 RID: 152 RVA: 0x00009EE2 File Offset: 0x000080E2
 		internal static string aesgem
 		{
 			get
@@ -61,7 +61,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000095 RID: 149 RVA: 0x0000A144 File Offset: 0x00008544
+		// (get) Token: 0x06000099 RID: 153 RVA: 0x00009EF8 File Offset: 0x000080F8
 		internal static string Antis
 		{
 			get
@@ -71,7 +71,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x06000096 RID: 150 RVA: 0x0000A15A File Offset: 0x0000855A
+		// (get) Token: 0x0600009A RID: 154 RVA: 0x00009F0E File Offset: 0x0000810E
 		internal static string Banking
 		{
 			get
@@ -81,7 +81,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000097 RID: 151 RVA: 0x0000A170 File Offset: 0x00008570
+		// (get) Token: 0x0600009B RID: 155 RVA: 0x00009F24 File Offset: 0x00008124
 		internal static string cbcrypt
 		{
 			get
@@ -91,7 +91,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x06000098 RID: 152 RVA: 0x0000A186 File Offset: 0x00008586
+		// (get) Token: 0x0600009C RID: 156 RVA: 0x00009F3A File Offset: 0x0000813A
 		internal static string CommandHelper
 		{
 			get
@@ -101,7 +101,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x06000099 RID: 153 RVA: 0x0000A19C File Offset: 0x0000859C
+		// (get) Token: 0x0600009D RID: 157 RVA: 0x00009F50 File Offset: 0x00008150
 		internal static string Counter
 		{
 			get
@@ -111,7 +111,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x0600009A RID: 154 RVA: 0x0000A1B2 File Offset: 0x000085B2
+		// (get) Token: 0x0600009E RID: 158 RVA: 0x00009F66 File Offset: 0x00008166
 		internal static string Crypto
 		{
 			get
@@ -121,7 +121,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x0600009B RID: 155 RVA: 0x0000A1C8 File Offset: 0x000085C8
+		// (get) Token: 0x0600009F RID: 159 RVA: 0x00009F7C File Offset: 0x0000817C
 		internal static string Devil
 		{
 			get
@@ -131,7 +131,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x0600009C RID: 156 RVA: 0x0000A1DE File Offset: 0x000085DE
+		// (get) Token: 0x060000A0 RID: 160 RVA: 0x00009F92 File Offset: 0x00008192
 		internal static string ErrorHandling
 		{
 			get
@@ -141,7 +141,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x0600009D RID: 157 RVA: 0x0000A1F4 File Offset: 0x000085F4
+		// (get) Token: 0x060000A1 RID: 161 RVA: 0x00009FA8 File Offset: 0x000081A8
 		internal static string Grabbing
 		{
 			get
@@ -151,7 +151,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x0600009E RID: 158 RVA: 0x0000A20A File Offset: 0x0000860A
+		// (get) Token: 0x060000A2 RID: 162 RVA: 0x00009FBE File Offset: 0x000081BE
 		internal static string Handler
 		{
 			get
@@ -161,7 +161,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x0600009F RID: 159 RVA: 0x0000A220 File Offset: 0x00008620
+		// (get) Token: 0x060000A3 RID: 163 RVA: 0x00009FD4 File Offset: 0x000081D4
 		internal static string IniFile
 		{
 			get
@@ -171,7 +171,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x060000A0 RID: 160 RVA: 0x0000A236 File Offset: 0x00008636
+		// (get) Token: 0x060000A4 RID: 164 RVA: 0x00009FEA File Offset: 0x000081EA
 		internal static string Minecraft
 		{
 			get
@@ -181,7 +181,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x060000A1 RID: 161 RVA: 0x0000A24C File Offset: 0x0000864C
+		// (get) Token: 0x060000A5 RID: 165 RVA: 0x0000A000 File Offset: 0x00008200
 		internal static string Paths
 		{
 			get
@@ -191,7 +191,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x060000A2 RID: 162 RVA: 0x0000A262 File Offset: 0x00008662
+		// (get) Token: 0x060000A6 RID: 166 RVA: 0x0000A016 File Offset: 0x00008216
 		internal static string Program
 		{
 			get
@@ -201,7 +201,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x060000A3 RID: 163 RVA: 0x0000A278 File Offset: 0x00008678
+		// (get) Token: 0x060000A7 RID: 167 RVA: 0x0000A02C File Offset: 0x0000822C
 		internal static string Rich
 		{
 			get
@@ -211,7 +211,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000024 RID: 36
-		// (get) Token: 0x060000A4 RID: 164 RVA: 0x0000A28E File Offset: 0x0000868E
+		// (get) Token: 0x060000A8 RID: 168 RVA: 0x0000A042 File Offset: 0x00008242
 		internal static string SQLite
 		{
 			get
@@ -221,7 +221,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000025 RID: 37
-		// (get) Token: 0x060000A5 RID: 165 RVA: 0x0000A2A4 File Offset: 0x000086A4
+		// (get) Token: 0x060000A9 RID: 169 RVA: 0x0000A058 File Offset: 0x00008258
 		internal static string SQLReader
 		{
 			get
@@ -231,7 +231,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000026 RID: 38
-		// (get) Token: 0x060000A6 RID: 166 RVA: 0x0000A2BA File Offset: 0x000086BA
+		// (get) Token: 0x060000AA RID: 170 RVA: 0x0000A06E File Offset: 0x0000826E
 		internal static string StringsCrypt
 		{
 			get
@@ -241,7 +241,7 @@ namespace BlitzedGrabber.Properties
 		}
 
 		// Token: 0x17000027 RID: 39
-		// (get) Token: 0x060000A7 RID: 167 RVA: 0x0000A2D0 File Offset: 0x000086D0
+		// (get) Token: 0x060000AB RID: 171 RVA: 0x0000A084 File Offset: 0x00008284
 		internal static string Wifi
 		{
 			get
@@ -250,10 +250,10 @@ namespace BlitzedGrabber.Properties
 			}
 		}
 
-		// Token: 0x04000063 RID: 99
+		// Token: 0x04000062 RID: 98
 		private static ResourceManager resourceMan;
 
-		// Token: 0x04000064 RID: 100
+		// Token: 0x04000063 RID: 99
 		private static CultureInfo resourceCulture;
 	}
 }

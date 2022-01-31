@@ -8,60 +8,60 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x02000015 RID: 21
 	public class ControlFlow : Protection
 	{
-		// Token: 0x06000040 RID: 64 RVA: 0x000039EC File Offset: 0x00001DEC
+		// Token: 0x0600003F RID: 63 RVA: 0x000039E4 File Offset: 0x00001BE4
 		public ControlFlow()
 		{
 			base.Name = "Control Flow";
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00003A88 File Offset: 0x00001E88
+		// Token: 0x06000040 RID: 64 RVA: 0x00003A80 File Offset: 0x00001C80
 		public override void Execute()
 		{
-			int num = 0;
-			for (int i = 0; i < Kappa.Module.Types.Count; i++)
+			int amount = 0;
+			for (int x = 0; x < Kappa.Module.Types.Count; x++)
 			{
-				TypeDef typeDef = Kappa.Module.Types[i];
-				for (int j = 0; j < typeDef.Methods.Count; j++)
+				TypeDef tDef = Kappa.Module.Types[x];
+				for (int i = 0; i < tDef.Methods.Count; i++)
 				{
-					MethodDef methodDef = typeDef.Methods[j];
-					if (!methodDef.Name.StartsWith("get_") && !methodDef.Name.StartsWith("set_") && methodDef.HasBody && !methodDef.IsConstructor)
+					MethodDef mDef = tDef.Methods[i];
+					if (!mDef.Name.StartsWith("get_") && !mDef.Name.StartsWith("set_") && mDef.HasBody && !mDef.IsConstructor)
 					{
-						methodDef.Body.SimplifyBranches();
-						this.ExecuteMethod(methodDef);
-						num++;
+						mDef.Body.SimplifyBranches();
+						this.ExecuteMethod(mDef);
+						amount++;
 					}
 				}
 			}
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00003B3C File Offset: 0x00001F3C
+		// Token: 0x06000041 RID: 65 RVA: 0x00003B34 File Offset: 0x00001D34
 		private void ExecuteMethod(MethodDef method)
 		{
 			for (int i = 0; i < method.Body.Instructions.Count; i++)
 			{
 				if (method.Body.Instructions[i].IsLdcI4())
 				{
-					int num = Randomizer.Next();
-					int num2 = Randomizer.Next();
-					int value = num ^ num2;
-					int num3 = Randomizer.Next(this.types.Length, 0);
-					Type type = this.types[num3];
-					Instruction instruction = OpCodes.Nop.ToInstruction();
-					Local local = new Local(method.Module.ImportAsTypeSig(type));
-					Instruction item = OpCodes.Stloc.ToInstruction(local);
+					int numorig = Randomizer.Next();
+					int div = Randomizer.Next();
+					int num = numorig ^ div;
+					int lastIndex = Randomizer.Next(this.types.Length, 0);
+					Type randType = this.types[lastIndex];
+					Instruction nop = OpCodes.Nop.ToInstruction();
+					Local local = new Local(method.Module.ImportAsTypeSig(randType));
+					Instruction localCode = OpCodes.Stloc.ToInstruction(local);
 					method.Body.Variables.Add(local);
-					method.Body.Instructions.Insert(i + 1, item);
-					method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Ldc_I4, method.Body.Instructions[i].GetLdcI4Value() - this.sizes[num3]));
-					method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Ldc_I4, value));
-					method.Body.Instructions.Insert(i + 4, Instruction.Create(OpCodes.Ldc_I4, num2));
+					method.Body.Instructions.Insert(i + 1, localCode);
+					method.Body.Instructions.Insert(i + 2, Instruction.Create(OpCodes.Ldc_I4, method.Body.Instructions[i].GetLdcI4Value() - this.sizes[lastIndex]));
+					method.Body.Instructions.Insert(i + 3, Instruction.Create(OpCodes.Ldc_I4, num));
+					method.Body.Instructions.Insert(i + 4, Instruction.Create(OpCodes.Ldc_I4, div));
 					method.Body.Instructions.Insert(i + 5, Instruction.Create(OpCodes.Xor));
-					method.Body.Instructions.Insert(i + 6, Instruction.Create(OpCodes.Ldc_I4, num));
-					method.Body.Instructions.Insert(i + 7, Instruction.Create(OpCodes.Bne_Un, instruction));
+					method.Body.Instructions.Insert(i + 6, Instruction.Create(OpCodes.Ldc_I4, numorig));
+					method.Body.Instructions.Insert(i + 7, Instruction.Create(OpCodes.Bne_Un, nop));
 					method.Body.Instructions.Insert(i + 8, Instruction.Create(OpCodes.Ldc_I4, 2));
-					method.Body.Instructions.Insert(i + 9, item);
-					method.Body.Instructions.Insert(i + 10, Instruction.Create(OpCodes.Sizeof, method.Module.Import(type)));
+					method.Body.Instructions.Insert(i + 9, localCode);
+					method.Body.Instructions.Insert(i + 10, Instruction.Create(OpCodes.Sizeof, method.Module.Import(randType)));
 					method.Body.Instructions.Insert(i + 11, Instruction.Create(OpCodes.Add));
-					method.Body.Instructions.Insert(i + 12, instruction);
+					method.Body.Instructions.Insert(i + 12, nop);
 					i += method.Body.Instructions.Count - i;
 				}
 			}

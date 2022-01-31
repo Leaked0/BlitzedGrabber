@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{48289920-0C6D-4C74-99DC-CBDE83A61B1D}</ProjectGuid>
+    <ProjectGuid>{F457890A-EF55-4CD6-AEE4-E8B071EBF67E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BlitzedGrabber</RootNamespace>
     <AssemblyName>BlitzedGrabber</AssemblyName>
@@ -104,6 +104,7 @@
     <EmbeddedResource Include="Form1.resources" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

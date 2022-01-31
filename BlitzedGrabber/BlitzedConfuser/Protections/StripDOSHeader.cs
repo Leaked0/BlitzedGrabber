@@ -6,29 +6,29 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x0200001D RID: 29
 	public class StripDOSHeader
 	{
-		// Token: 0x06000069 RID: 105 RVA: 0x0000537C File Offset: 0x0000377C
+		// Token: 0x06000068 RID: 104 RVA: 0x00005374 File Offset: 0x00003574
 		public static void Execute()
 		{
-			byte[] data = new byte[64];
-			byte[] data2 = StripDOSHeader.ReadArray(StripDOSHeader.offset_magic, StripDOSHeader.length_magic, Kappa.Stream);
-			byte[] data3 = StripDOSHeader.ReadArray(StripDOSHeader.offset_lfanew, StripDOSHeader.length_lfanew, Kappa.Stream);
+			byte[] blank_dos = new byte[64];
+			byte[] magic = StripDOSHeader.ReadArray(StripDOSHeader.offset_magic, StripDOSHeader.length_magic, Kappa.Stream);
+			byte[] lfanew = StripDOSHeader.ReadArray(StripDOSHeader.offset_lfanew, StripDOSHeader.length_lfanew, Kappa.Stream);
 			Kappa.Stream.Position = 0L;
-			StripDOSHeader.WriteArray(0U, data, Kappa.Stream);
-			StripDOSHeader.WriteArray(StripDOSHeader.offset_magic, data2, Kappa.Stream);
-			StripDOSHeader.WriteArray(StripDOSHeader.offset_lfanew, data3, Kappa.Stream);
+			StripDOSHeader.WriteArray(0U, blank_dos, Kappa.Stream);
+			StripDOSHeader.WriteArray(StripDOSHeader.offset_magic, magic, Kappa.Stream);
+			StripDOSHeader.WriteArray(StripDOSHeader.offset_lfanew, lfanew, Kappa.Stream);
 			StripDOSHeader.WriteArray(78U, new byte[39], Kappa.Stream);
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x0000540C File Offset: 0x0000380C
+		// Token: 0x06000069 RID: 105 RVA: 0x00005404 File Offset: 0x00003604
 		private static byte[] ReadArray(uint offset, int length, Stream stream)
 		{
-			byte[] array = new byte[length];
+			byte[] data = new byte[length];
 			stream.Position = (long)((ulong)offset);
-			stream.Read(array, 0, array.Length);
-			return array;
+			stream.Read(data, 0, data.Length);
+			return data;
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x00005435 File Offset: 0x00003835
+		// Token: 0x0600006A RID: 106 RVA: 0x0000542D File Offset: 0x0000362D
 		private static int WriteArray(uint offset, byte[] data, Stream stream)
 		{
 			stream.Position = (long)((ulong)offset);

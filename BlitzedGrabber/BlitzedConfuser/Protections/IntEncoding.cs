@@ -8,53 +8,53 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x02000016 RID: 22
 	public class IntEncoding : Protection
 	{
-		// Token: 0x06000043 RID: 67 RVA: 0x00003D81 File Offset: 0x00002181
+		// Token: 0x06000042 RID: 66 RVA: 0x00003D79 File Offset: 0x00001F79
 		public IntEncoding()
 		{
 			base.Name = "Integer Encoding";
 		}
 
 		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000044 RID: 68 RVA: 0x00003D94 File Offset: 0x00002194
-		// (set) Token: 0x06000045 RID: 69 RVA: 0x00003D9C File Offset: 0x0000219C
+		// (get) Token: 0x06000043 RID: 67 RVA: 0x00003D8C File Offset: 0x00001F8C
+		// (set) Token: 0x06000044 RID: 68 RVA: 0x00003D94 File Offset: 0x00001F94
 		private int Amount { get; set; }
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00003DA8 File Offset: 0x000021A8
+		// Token: 0x06000045 RID: 69 RVA: 0x00003DA0 File Offset: 0x00001FA0
 		public override void Execute()
 		{
-			IMethod method = Kappa.Module.Import(typeof(Math).GetMethod("Abs", new Type[] { typeof(int) }));
-			IMethod method2 = Kappa.Module.Import(typeof(Math).GetMethod("Min", new Type[]
+			IMethod absMethod = Kappa.Module.Import(typeof(Math).GetMethod("Abs", new Type[] { typeof(int) }));
+			IMethod minMethod = Kappa.Module.Import(typeof(Math).GetMethod("Min", new Type[]
 			{
 				typeof(int),
 				typeof(int)
 			}));
 			foreach (TypeDef typeDef in Kappa.Module.Types)
 			{
-				foreach (MethodDef methodDef in typeDef.Methods)
+				foreach (MethodDef method in typeDef.Methods)
 				{
-					if (methodDef.HasBody)
+					if (method.HasBody)
 					{
-						for (int i = 0; i < methodDef.Body.Instructions.Count; i++)
+						for (int i = 0; i < method.Body.Instructions.Count; i++)
 						{
-							if (methodDef.Body.Instructions[i] != null && methodDef.Body.Instructions[i].IsLdcI4())
+							if (method.Body.Instructions[i] != null && method.Body.Instructions[i].IsLdcI4())
 							{
-								int ldcI4Value = methodDef.Body.Instructions[i].GetLdcI4Value();
-								if (ldcI4Value > 0)
+								int operand = method.Body.Instructions[i].GetLdcI4Value();
+								if (operand > 0)
 								{
-									methodDef.Body.Instructions.Insert(i + 1, OpCodes.Call.ToInstruction(method));
-									int num = Randomizer.Next(MemberRenamer.StringLength(), 8);
-									if (num % 2 != 0)
+									method.Body.Instructions.Insert(i + 1, OpCodes.Call.ToInstruction(absMethod));
+									int neg = Randomizer.Next(MemberRenamer.StringLength(), 8);
+									if (neg % 2 != 0)
 									{
-										num++;
+										neg++;
 									}
-									for (int j = 0; j < num; j++)
+									for (int j = 0; j < neg; j++)
 									{
-										methodDef.Body.Instructions.Insert(i + j + 1, Instruction.Create(OpCodes.Neg));
+										method.Body.Instructions.Insert(i + j + 1, Instruction.Create(OpCodes.Neg));
 									}
-									if (ldcI4Value < 2147483647)
+									if (operand < 2147483647)
 									{
-										methodDef.Body.Instructions.Insert(i + 1, OpCodes.Ldc_I4.ToInstruction(int.MaxValue));
-										methodDef.Body.Instructions.Insert(i + 2, OpCodes.Call.ToInstruction(method2));
+										method.Body.Instructions.Insert(i + 1, OpCodes.Ldc_I4.ToInstruction(int.MaxValue));
+										method.Body.Instructions.Insert(i + 2, OpCodes.Call.ToInstruction(minMethod));
 									}
 									int amount = this.Amount + 1;
 									this.Amount = amount;

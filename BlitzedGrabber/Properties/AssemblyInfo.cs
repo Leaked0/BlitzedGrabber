@@ -16,4 +16,3 @@ using System.Runtime.Versioning;
 [assembly: ComVisible(false)]
 [assembly: Guid("dbb5bc16-13fe-475a-9192-34a965d31f7e")]
 [assembly: AssemblyFileVersion("1.2.2.2")]
-[assembly: SuppressIldasm]

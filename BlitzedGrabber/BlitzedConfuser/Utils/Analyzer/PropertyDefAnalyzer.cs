@@ -6,7 +6,7 @@ namespace BlitzedConfuser.Utils.Analyzer
 	// Token: 0x02000011 RID: 17
 	public class PropertyDefAnalyzer : DefAnalyzer
 	{
-		// Token: 0x06000035 RID: 53 RVA: 0x000036E0 File Offset: 0x00001AE0
+		// Token: 0x06000034 RID: 52 RVA: 0x000036D8 File Offset: 0x000018D8
 		public override bool Execute(object context)
 		{
 			PropertyDef propertyDef = (PropertyDef)context;

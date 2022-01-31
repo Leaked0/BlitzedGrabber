@@ -6,25 +6,25 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x02000013 RID: 19
 	public class AntiDe4dot : Protection
 	{
-		// Token: 0x06000039 RID: 57 RVA: 0x00003753 File Offset: 0x00001B53
+		// Token: 0x06000038 RID: 56 RVA: 0x0000374B File Offset: 0x0000194B
 		public AntiDe4dot()
 		{
 			base.Name = "Anti-De4dot";
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x00003768 File Offset: 0x00001B68
+		// Token: 0x06000039 RID: 57 RVA: 0x00003760 File Offset: 0x00001960
 		public override void Execute()
 		{
-			foreach (ModuleDef moduleDef in Kappa.Module.Assembly.Modules)
+			foreach (ModuleDef module in Kappa.Module.Assembly.Modules)
 			{
-				InterfaceImplUser item = new InterfaceImplUser(moduleDef.GlobalType);
+				InterfaceImplUser @int = new InterfaceImplUser(module.GlobalType);
 				for (int i = 0; i < 1; i++)
 				{
-					TypeDefUser typeDefUser = new TypeDefUser(string.Empty, string.Format("Form{0}", i), moduleDef.CorLibTypes.GetTypeRef("System", "Attribute"));
-					InterfaceImplUser item2 = new InterfaceImplUser(typeDefUser);
-					moduleDef.Types.Add(typeDefUser);
-					typeDefUser.Interfaces.Add(item2);
-					typeDefUser.Interfaces.Add(item);
+					TypeDefUser typeDef = new TypeDefUser(string.Empty, string.Format("Form{0}", i), module.CorLibTypes.GetTypeRef("System", "Attribute"));
+					InterfaceImplUser int2 = new InterfaceImplUser(typeDef);
+					module.Types.Add(typeDef);
+					typeDef.Interfaces.Add(int2);
+					typeDef.Interfaces.Add(@int);
 				}
 			}
 		}

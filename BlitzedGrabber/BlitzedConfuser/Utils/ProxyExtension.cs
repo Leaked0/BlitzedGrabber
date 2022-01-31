@@ -9,8 +9,8 @@ namespace BlitzedConfuser.Utils
 	// Token: 0x02000006 RID: 6
 	public static class ProxyExtension
 	{
-		// Token: 0x0600001C RID: 28 RVA: 0x00002D5E File Offset: 0x0000115E
-		public static MethodDef CloneSignature(MethodDef from, MethodDef to)
+		// Token: 0x0600001B RID: 27 RVA: 0x00002D56 File Offset: 0x00000F56
+		public static MethodDef CloneSignature(this MethodDef from, MethodDef to)
 		{
 			to.Attributes = from.Attributes;
 			if (from.IsHideBySig)
@@ -23,29 +23,28 @@ namespace BlitzedConfuser.Utils
 			}
 			return to;
 		}
-
-		// Token: 0x0600001D RID: 29 RVA: 0x00002D8C File Offset: 0x0000118C
 		private static Func<Instruction, Instruction> nine__zero;
+		// Token: 0x0600001C RID: 28 RVA: 0x00002D84 File Offset: 0x00000F84
 		public static MethodDef CopyMethod(this MethodDef originMethod, ModuleDef mod)
 		{
-			InjectContext injectContext = new InjectContext(mod, mod);
-			MethodDefUser methodDefUser = new MethodDefUser
+			InjectContext ctx = new InjectContext(mod, mod);
+			MethodDefUser newMethodDef = new MethodDefUser
 			{
-				Signature = injectContext.Importer.Import(originMethod.Signature),
+				Signature = ctx.Importer.Import(originMethod.Signature),
 				Name = Randomizer.String(MemberRenamer.StringLength())
 			};
-			methodDefUser.Parameters.UpdateParameterTypes();
+			newMethodDef.Parameters.UpdateParameterTypes();
 			if (originMethod.ImplMap != null)
 			{
-				methodDefUser.ImplMap = new ImplMapUser(new ModuleRefUser(injectContext.TargetModule, originMethod.ImplMap.Module.Name), originMethod.ImplMap.Name, originMethod.ImplMap.Attributes);
+				newMethodDef.ImplMap = new ImplMapUser(new ModuleRefUser(ctx.TargetModule, originMethod.ImplMap.Module.Name), originMethod.ImplMap.Name, originMethod.ImplMap.Attributes);
 			}
-			foreach (CustomAttribute customAttribute in originMethod.CustomAttributes)
+			foreach (CustomAttribute ca in originMethod.CustomAttributes)
 			{
-				methodDefUser.CustomAttributes.Add(new CustomAttribute((ICustomAttributeType)injectContext.Importer.Import(customAttribute.Constructor)));
+				newMethodDef.CustomAttributes.Add(new CustomAttribute((ICustomAttributeType)ctx.Importer.Import(ca.Constructor)));
 			}
 			if (originMethod.HasBody)
 			{
-				methodDefUser.Body = new CilBody
+				newMethodDef.Body = new CilBody
 				{
 					InitLocals = originMethod.Body.InitLocals,
 					MaxStack = originMethod.Body.MaxStack
@@ -53,65 +52,65 @@ namespace BlitzedConfuser.Utils
 				Dictionary<object, object> bodyMap = new Dictionary<object, object>();
 				foreach (Local local in originMethod.Body.Variables)
 				{
-					Local local2 = new Local(injectContext.Importer.Import(local.Type));
-					methodDefUser.Body.Variables.Add(local2);
-					local2.Name = local.Name;
-					bodyMap[local] = local2;
+					Local newLocal = new Local(ctx.Importer.Import(local.Type));
+					newMethodDef.Body.Variables.Add(newLocal);
+					newLocal.Name = local.Name;
+					bodyMap[local] = newLocal;
 				}
-				foreach (Instruction instruction in originMethod.Body.Instructions)
+				foreach (Instruction instr in originMethod.Body.Instructions)
 				{
-					Instruction instruction2 = new Instruction(instruction.OpCode, instruction.Operand)
+					Instruction newInstr = new Instruction(instr.OpCode, instr.Operand)
 					{
-						SequencePoint = instruction.SequencePoint
+						SequencePoint = instr.SequencePoint
 					};
-					if (instruction2.Operand is IType)
+					if (newInstr.Operand is IType)
 					{
-						instruction2.Operand = injectContext.Importer.Import((IType)instruction2.Operand);
+						newInstr.Operand = ctx.Importer.Import((IType)newInstr.Operand);
 					}
-					else if (instruction2.Operand is IMethod)
+					else if (newInstr.Operand is IMethod)
 					{
-						instruction2.Operand = injectContext.Importer.Import((IMethod)instruction2.Operand);
+						newInstr.Operand = ctx.Importer.Import((IMethod)newInstr.Operand);
 					}
-					else if (instruction2.Operand is IField)
+					else if (newInstr.Operand is IField)
 					{
-						instruction2.Operand = injectContext.Importer.Import((IField)instruction2.Operand);
+						newInstr.Operand = ctx.Importer.Import((IField)newInstr.Operand);
 					}
-					methodDefUser.Body.Instructions.Add(instruction2);
-					bodyMap[instruction] = instruction2;
+					newMethodDef.Body.Instructions.Add(newInstr);
+					bodyMap[instr] = newInstr;
 				}
-				foreach (Instruction instruction3 in methodDefUser.Body.Instructions)
+				foreach (Instruction instr2 in newMethodDef.Body.Instructions)
 				{
-					if (instruction3.Operand != null && bodyMap.ContainsKey(instruction3.Operand))
+					if (instr2.Operand != null && bodyMap.ContainsKey(instr2.Operand))
 					{
-						instruction3.Operand = bodyMap[instruction3.Operand];
+						instr2.Operand = bodyMap[instr2.Operand];
 					}
-					else if (instruction3.Operand is Instruction[])
+					else if (instr2.Operand is Instruction[])
 					{
-						Instruction instruction4 = instruction3;
-						IEnumerable<Instruction> source = (Instruction[])instruction3.Operand;
+						Instruction instruction = instr2;
+						IEnumerable<Instruction> source = (Instruction[])instr2.Operand;
 						Func<Instruction, Instruction> selector;
 						if ((selector = nine__zero) == null)
 						{
 							selector = (nine__zero = (Instruction target) => (Instruction)bodyMap[target]);
 						}
-						instruction4.Operand = source.Select(selector).ToArray<Instruction>();
+						instruction.Operand = source.Select(selector).ToArray<Instruction>();
 					}
 				}
-				foreach (ExceptionHandler exceptionHandler in originMethod.Body.ExceptionHandlers)
+				foreach (ExceptionHandler eh in originMethod.Body.ExceptionHandlers)
 				{
-					methodDefUser.Body.ExceptionHandlers.Add(new ExceptionHandler(exceptionHandler.HandlerType)
+					newMethodDef.Body.ExceptionHandlers.Add(new ExceptionHandler(eh.HandlerType)
 					{
-						CatchType = ((exceptionHandler.CatchType == null) ? null : injectContext.Importer.Import(exceptionHandler.CatchType)),
-						TryStart = (Instruction)bodyMap[exceptionHandler.TryStart],
-						TryEnd = (Instruction)bodyMap[exceptionHandler.TryEnd],
-						HandlerStart = (Instruction)bodyMap[exceptionHandler.HandlerStart],
-						HandlerEnd = (Instruction)bodyMap[exceptionHandler.HandlerEnd],
-						FilterStart = ((exceptionHandler.FilterStart == null) ? null : ((Instruction)bodyMap[exceptionHandler.FilterStart]))
+						CatchType = ((eh.CatchType == null) ? null : ctx.Importer.Import(eh.CatchType)),
+						TryStart = (Instruction)bodyMap[eh.TryStart],
+						TryEnd = (Instruction)bodyMap[eh.TryEnd],
+						HandlerStart = (Instruction)bodyMap[eh.HandlerStart],
+						HandlerEnd = (Instruction)bodyMap[eh.HandlerEnd],
+						FilterStart = ((eh.FilterStart == null) ? null : ((Instruction)bodyMap[eh.FilterStart]))
 					});
 				}
-				methodDefUser.Body.SimplifyMacros(methodDefUser.Parameters);
+				newMethodDef.Body.SimplifyMacros(newMethodDef.Parameters);
 			}
-			return methodDefUser;
+			return newMethodDef;
 		}
 	}
 }

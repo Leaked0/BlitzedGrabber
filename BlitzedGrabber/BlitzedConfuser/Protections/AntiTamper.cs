@@ -11,41 +11,41 @@ namespace BlitzedConfuser.Protections
 	// Token: 0x02000014 RID: 20
 	public class AntiTamper : Protection
 	{
-		// Token: 0x0600003B RID: 59 RVA: 0x00003844 File Offset: 0x00001C44
+		// Token: 0x0600003A RID: 58 RVA: 0x0000383C File Offset: 0x00001A3C
 		public AntiTamper()
 		{
 			base.Name = "Anti-Tamper";
 		}
 
 		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x0600003C RID: 60 RVA: 0x00003857 File Offset: 0x00001C57
-		// (set) Token: 0x0600003D RID: 61 RVA: 0x0000385E File Offset: 0x00001C5E
+		// (get) Token: 0x0600003B RID: 59 RVA: 0x0000384F File Offset: 0x00001A4F
+		// (set) Token: 0x0600003C RID: 60 RVA: 0x00003856 File Offset: 0x00001A56
 		public static bool Tampered { get; set; }
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00003868 File Offset: 0x00001C68
+		// Token: 0x0600003D RID: 61 RVA: 0x00003860 File Offset: 0x00001A60
 		public static void Inject(string filePath)
 		{
-			using (MD5 md = MD5.Create())
+			using (MD5 hash = MD5.Create())
 			{
-				byte[] array = md.ComputeHash(File.ReadAllBytes(filePath));
-				using (FileStream fileStream = new FileStream(filePath, FileMode.Append))
+				byte[] bytes = hash.ComputeHash(File.ReadAllBytes(filePath));
+				using (FileStream fs = new FileStream(filePath, FileMode.Append))
 				{
-					fileStream.Write(array, 0, array.Length);
+					fs.Write(bytes, 0, bytes.Length);
 				}
 			}
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x000038D0 File Offset: 0x00001CD0
+		// Token: 0x0600003E RID: 62 RVA: 0x000038C8 File Offset: 0x00001AC8
 		public override void Execute()
 		{
-			MethodDef methodDef = (MethodDef)InjectHelper.Inject(ModuleDefMD.Load(typeof(TamperClass).Module).ResolveTypeDef(MDToken.ToRID(typeof(TamperClass).MetadataToken)), Kappa.Module.GlobalType, Kappa.Module).Single((IDnlibDef method) => method.Name == "NoTampering");
-			MemberRenamer.GetRenamed(methodDef);
-			Kappa.Module.GlobalType.FindOrCreateStaticConstructor().Body.Instructions.Insert(0, Instruction.Create(OpCodes.Call, methodDef));
-			foreach (MethodDef methodDef2 in Kappa.Module.GlobalType.Methods)
+			MethodDef init = (MethodDef)InjectHelper.Inject(ModuleDefMD.Load(typeof(TamperClass).Module).ResolveTypeDef(MDToken.ToRID(typeof(TamperClass).MetadataToken)), Kappa.Module.GlobalType, Kappa.Module).Single((IDnlibDef method) => method.Name == "NoTampering");
+			init.GetRenamed();
+			Kappa.Module.GlobalType.FindOrCreateStaticConstructor().Body.Instructions.Insert(0, Instruction.Create(OpCodes.Call, init));
+			foreach (MethodDef method2 in Kappa.Module.GlobalType.Methods)
 			{
-				if (methodDef2.Name.Equals(".ctor"))
+				if (method2.Name.Equals(".ctor"))
 				{
-					Kappa.Module.GlobalType.Remove(methodDef2);
+					Kappa.Module.GlobalType.Remove(method2);
 					break;
 				}
 			}

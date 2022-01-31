@@ -11,7 +11,7 @@ namespace BlitzedGrabber.Properties
 	internal sealed partial class Settings : ApplicationSettingsBase
 	{
 		// Token: 0x17000028 RID: 40
-		// (get) Token: 0x060000A8 RID: 168 RVA: 0x0000A2E6 File Offset: 0x000086E6
+		// (get) Token: 0x060000AC RID: 172 RVA: 0x0000A09A File Offset: 0x0000829A
 		public static Settings Default
 		{
 			get
@@ -20,7 +20,7 @@ namespace BlitzedGrabber.Properties
 			}
 		}
 
-		// Token: 0x04000065 RID: 101
+		// Token: 0x04000064 RID: 100
 		private static Settings defaultInstance = (Settings)SettingsBase.Synchronized(new Settings());
 	}
 }

