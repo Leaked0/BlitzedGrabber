@@ -1,5 +1,7 @@
 # BlitzedGrabber
 
+<h1>The owner gave up 😳 => https://github.com/StvnedEagle1337/BlitzedGrabber</h1>
+
 A way to contact the fabulous Qizq that sent this skidded tool => Telegram [@notqizq](https://t.me/notqizq)
 
 Leak List for 2022 [Click Here](https://github.com/HideakiAtsuyo/Leaked0-List-2022) and if you a specific leak [Click Here](https://github.com/HideakiAtsuyo/Leaked0-List-2022/issues/new)
